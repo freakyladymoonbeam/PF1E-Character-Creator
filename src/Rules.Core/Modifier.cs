@@ -21,7 +21,8 @@ public enum BonusType
     Resistance,
     Sacred,
     Shield,
-    Size
+    Size,
+    Trait
 }
 
 // Represents a modifier to a character's stat, including its value, type, and source.
