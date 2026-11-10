@@ -11,6 +11,9 @@ public class Character
     // The race of the character.
     public RaceDefinition? Race { get; set; }
 
+    // The classes and levels of the character.
+    public List<ClassLevel> Classes { get; } = [];
+
     // The base ability scores of the character.
     public Dictionary<Ability, int> BaseAbilityScores { get; } =
         Enum.GetValues<Ability>().ToDictionary(a => a, _ => 10);
@@ -38,11 +41,47 @@ public class Character
     public int Total(string stat) =>
         ModifierResolver.Total(AllModifiers.Where(m => m.Stat == stat));
 
+    // Abilities
     public int AbilityScore(Ability ability) =>
         BaseAbilityScores[ability] + Total(ability.ToString());
 
     public int AbilityModifier(Ability ability) =>
         AbilityMath.ModifierFor(AbilityScore(ability));
+
+    // Levels and class progression (summed across classes, as multiclassing requires)
+    public int TotalLevel => Classes.Sum(c => c.Level);
+
+    public int BaseAttackBonus =>
+        Classes.Sum(c => c.Class.BaseAttackBonusAt(c.Level));
+
+    public int BaseFortitude =>
+        Classes.Sum(c => ClassDefinition.SaveAt(c.Class.Fortitude, c.Level));
+
+    public int BaseReflex =>
+        Classes.Sum(c => ClassDefinition.SaveAt(c.Class.Reflex, c.Level));
+
+    public int BaseWill =>
+        Classes.Sum(c => ClassDefinition.SaveAt(c.Class.Will, c.Level));
+
+    public IEnumerable<ClassFeatureDefinition> ClassFeatures =>
+        Classes.SelectMany(c => c.Class.Features.Where(f => f.Level <= c.Level));
+
+    // Saves
+    public int FortitudeSave =>
+        BaseFortitude + AbilityModifier(Ability.Constitution) + Total("Fortitude");
+
+    public int ReflexSave =>
+        BaseReflex + AbilityModifier(Ability.Dexterity) + Total("Reflex");
+
+    public int WillSave =>
+        BaseWill + AbilityModifier(Ability.Wisdom) + Total("Will");
+
+    // Attacks
+    public int MeleeAttackBonus =>
+        BaseAttackBonus + AbilityModifier(Ability.Strength) + Total("Attack");
+
+    public int RangedAttackBonus =>
+        BaseAttackBonus + AbilityModifier(Ability.Dexterity) + Total("Attack");
 
     public int ArmorClass =>
         10 + AbilityModifier(Ability.Dexterity) + Total("AC");

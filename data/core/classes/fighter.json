@@ -1,0 +1,41 @@
+{
+  "id": "core.fighter",
+  "name": "Fighter",
+  "alignment": [
+    "LawfulGood", "NeutralGood", "ChaoticGood",
+    "LawfulNeutral", "TrueNeutral", "ChaoticNeutral",
+    "LawfulEvil", "NeutralEvil", "ChaoticEvil"
+  ],
+  "hitDie": 10,
+  "skillRanksPerLevel": 2,
+  "babProgression": "Full",
+  "fortitude": "Good",
+  "reflex": "Poor",
+  "will": "Poor",
+  "classSkills": [
+    "Climb", "Craft", "Handle Animal", "Intimidate",
+    "Knowledge (dungeoneering)", "Knowledge (engineering)",
+    "Profession", "Ride", "Survival", "Swim"
+  ],
+  "weaponProficiencies": ["All simple weapons", "All martial weapons"],
+  "armorProficiencies": ["All armor", "Shields (including tower shields)"],
+    "startingWealth": { "dice": 5, "sides": 6, "multiplier": 10 },
+  "features": [
+    { "level": 1, "name": "Bonus Feat", "description": "Gain a bonus combat feat. Fighters get another at every even level." },
+    { "level": 2, "name": "Bonus Feat", "description": "Gain a bonus combat feat." },
+    { "level": 2, "name": "Bravery", "description": "+1 bonus on Will saves against fear, increasing by 1 every four levels after 2nd." },
+    { "level": 3, "name": "Armor Training", "description": "Reduces armor check penalty by 1 and raises armor's maximum Dex bonus by 1. Improves every four levels after 3rd. Allows normal speed in medium armor at 3rd level and heavy armor at 7th." },
+    { "level": 4, "name": "Bonus Feat", "description": "Gain a bonus combat feat." },
+    { "level": 5, "name": "Weapon Training", "description": "Choose a weapon group for +1 attack and damage. Improves every four levels after 5th, and you choose a new group at 9th, 13th, and 17th." },
+    { "level": 6, "name": "Bonus Feat", "description": "Gain a bonus combat feat." },
+    { "level": 8, "name": "Bonus Feat", "description": "Gain a bonus combat feat." },
+    { "level": 10, "name": "Bonus Feat", "description": "Gain a bonus combat feat." },
+    { "level": 12, "name": "Bonus Feat", "description": "Gain a bonus combat feat." },
+    { "level": 14, "name": "Bonus Feat", "description": "Gain a bonus combat feat." },
+    { "level": 16, "name": "Bonus Feat", "description": "Gain a bonus combat feat." },
+    { "level": 18, "name": "Bonus Feat", "description": "Gain a bonus combat feat." },
+    { "level": 19, "name": "Armor Mastery", "description": "Gain damage reduction 5/- while wearing armor or using a shield." },
+    { "level": 20, "name": "Bonus Feat", "description": "Gain a bonus combat feat." },
+    { "level": 20, "name": "Weapon Mastery", "description": "Choose one weapon. Its attacks automatically confirm critical hits, its critical multiplier increases by 1, and it can't be disarmed." }
+  ]
+}
