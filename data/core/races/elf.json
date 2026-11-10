@@ -1,0 +1,42 @@
+{
+    "id": "core.elf",
+    "name": "Elf",
+    "size": "Medium",
+    "baseSpeed": 30,
+    "abilityModifiers": {
+        "Dexterity": 2,
+        "Intelligence": 2,
+        "Constitution": -2
+    },
+    "traits": [
+        {
+            "name": "Low-Light Vision",
+            "description": "Elves can see twice as far as humans in conditions of dim light."
+        },
+        {
+            "name": "Elven Immunities",
+            "description": "Elves are immune to magic sleep effects and get a +2 racial bonus on saving throws against enchantment spells and effects."
+        },
+        {
+            "name": "Elven Magic",
+            "description": "Elves receive a +2 racial bonus on caster level checks made to overcome spell resistance. In addition, elves receive a +2 racial bonus on Spellcraft checks made to identify the properties of magic items."
+        },
+        {
+            "name": "Keen Senses",
+            "description": "Elves receive a +2 racial bonus on Perception checks.",
+            "modifiers": [
+                {
+                    "stat": "Perception",
+                    "value": 2,
+                    "type": "Racial"
+                }
+            ]
+        },
+        {
+            "name": "Weapon Familiarity",
+            "description": "Elves are proficient with longbows (including composite longbows), longswords, rapiers, and shortbows (including composite shortbows), and treat any weapon with the word “elven” in its name as a martial weapon."
+        }
+    ],
+    "languages": ["Common", "Elven"],
+    "bonusLanguages": ["Celestial", "Draconic", "Gnoll", "Gnome", "Goblin", "Orc", "Sylvan"]
+}

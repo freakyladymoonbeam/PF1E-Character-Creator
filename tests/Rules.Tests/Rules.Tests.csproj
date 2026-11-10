@@ -22,4 +22,8 @@
     <ProjectReference Include="..\..\src\Rules.Core\Rules.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="..\..\data\**\*.json" LinkBase="data" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>

@@ -17,6 +17,7 @@ public enum BonusType
     Morale,
     NaturalArmor,
     Profane,
+    Racial,
     Resistance,
     Sacred,
     Shield,
