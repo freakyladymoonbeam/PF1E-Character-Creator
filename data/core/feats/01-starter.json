@@ -16,72 +16,17 @@
     ]
   },
   {
-    "id": "core.magical-aptitude", "name": "Magical Aptitude", "types": ["General"],
-    "description": "Bonus on Spellcraft and Use Magic Device checks, larger at 10 ranks in the skill.",
-    "modifiers": [
-      { "stat": "Spellcraft", "value": 2, "type": "Untyped", "upgradedValue": 4 },
-      { "stat": "Use Magic Device", "value": 2, "type": "Untyped", "upgradedValue": 4 }
-    ]
-  },
-  {
-    "id": "core.persuasive", "name": "Persuasive", "types": ["General"],
-    "description": "Bonus on Diplomacy and Intimidate checks, larger at 10 ranks in the skill.",
-    "modifiers": [
-      { "stat": "Diplomacy", "value": 2, "type": "Untyped", "upgradedValue": 4 },
-      { "stat": "Intimidate", "value": 2, "type": "Untyped", "upgradedValue": 4 }
-    ]
-  },
-  {
-    "id": "core.skill-focus", "name": "Skill Focus", "types": ["General"],
-    "subject": "Skill",
-    "description": "Choose a skill. Bonus on checks with it, larger at 10 ranks.",
-    "modifiers": [
-      { "stat": "{subject}", "value": 3, "type": "Untyped", "upgradedValue": 6 }
-    ]
-  },
-  {
-    "id": "core.great-fortitude", "name": "Great Fortitude", "types": ["General"],
-    "description": "Bonus on Fortitude saves.",
-    "modifiers": [ { "stat": "Fortitude", "value": 2, "type": "Untyped" } ]
-  },
-  {
-    "id": "core.iron-will", "name": "Iron Will", "types": ["General"],
-    "description": "Bonus on Will saves.",
-    "modifiers": [ { "stat": "Will", "value": 2, "type": "Untyped" } ]
-  },
-  {
-    "id": "core.improved-iron-will", "name": "Improved Iron Will", "types": ["General"],
-    "description": "Once per day, reroll a Will save and keep the second result.",
-    "prerequisites": [ { "type": "Feat", "name": "Iron Will" } ]
-  },
-  {
-    "id": "core.lightning-reflexes", "name": "Lightning Reflexes", "types": ["General"],
-    "description": "Bonus on Reflex saves.",
-    "modifiers": [ { "stat": "Reflex", "value": 2, "type": "Untyped" } ]
-  },
-  {
-    "id": "core.toughness", "name": "Toughness", "types": ["General"],
-    "description": "Extra hit points, with more for each Hit Die beyond 3.",
-    "modifiers": [ { "stat": "HP", "value": 3, "type": "Untyped", "extraPerLevelBeyond": 3 } ]
-  },
-  {
-    "id": "core.improved-initiative", "name": "Improved Initiative", "types": ["Combat"],
-    "description": "Bonus on initiative checks.",
-    "modifiers": [ { "stat": "Initiative", "value": 4, "type": "Untyped" } ]
-  },
-  {
-    "id": "core.dodge", "name": "Dodge", "types": ["Combat"],
-    "description": "Dodge bonus to AC, lost whenever you lose your Dex bonus to AC.",
-    "prerequisites": [ { "type": "AbilityScore", "ability": "Dexterity", "value": 13 } ],
-    "modifiers": [ { "stat": "AC", "value": 1, "type": "Dodge" } ]
-  },
-  {
-    "id": "core.power-attack", "name": "Power Attack", "types": ["Combat"],
-    "description": "Trade melee accuracy for damage. The trade grows as your base attack bonus rises.",
+    "id": "core.bleeding-critical", "name": "Bleeding Critical", "types": ["Combat", "Critical"],
+    "description": "Critical hits with slashing or piercing weapons cause bleeding.",
     "prerequisites": [
-      { "type": "AbilityScore", "ability": "Strength", "value": 13 },
-      { "type": "BaseAttackBonus", "value": 1 }
+      { "type": "Feat", "name": "Critical Focus" },
+      { "type": "BaseAttackBonus", "value": 11 }
     ]
+  },
+  {
+    "id": "core.brew-potion", "name": "Brew Potion", "types": ["ItemCreation"],
+    "description": "Create magic potions.",
+    "prerequisites": [ { "type": "CasterLevel", "value": 3 } ]
   },
   {
     "id": "core.cleave", "name": "Cleave", "types": ["Combat"],
@@ -91,6 +36,35 @@
       { "type": "Feat", "name": "Power Attack" },
       { "type": "BaseAttackBonus", "value": 1 }
     ]
+  },
+  {
+    "id": "core.combat-expertise", "name": "Combat Expertise", "types": ["Combat"],
+    "description": "Trade melee accuracy for a dodge bonus to AC.",
+    "prerequisites": [ { "type": "AbilityScore", "ability": "Intelligence", "value": 13 } ]
+  },
+  {
+    "id": "core.critical-focus", "name": "Critical Focus", "types": ["Combat"],
+    "description": "Bonus on rolls to confirm critical hits.",
+    "prerequisites": [ { "type": "BaseAttackBonus", "value": 9 } ]
+  },
+  {
+    "id": "core.disruptive", "name": "Disruptive", "types": ["Combat"],
+    "description": "Raises the DC for enemies to cast defensively within your threatened area.",
+    "prerequisites": [ { "type": "ClassLevel", "name": "Fighter", "value": 6 } ]
+  },
+  {
+    "id": "core.dodge", "name": "Dodge", "types": ["Combat"],
+    "description": "Dodge bonus to AC, lost whenever you lose your Dex bonus to AC.",
+    "prerequisites": [ { "type": "AbilityScore", "ability": "Dexterity", "value": 13 } ],
+    "modifiers": [ { "stat": "AC", "value": 1, "type": "Dodge" } ]
+  },
+  {
+    "id": "core.empower-spell", "name": "Empower Spell", "types": ["Metamagic"],
+    "description": "Increase a spell's variable numeric effects by half, using a slot two levels higher."
+  },
+  {
+    "id": "core.eschew-materials", "name": "Eschew Materials", "types": ["General"],
+    "description": "Cast spells with cheap material components without needing them."
   },
   {
     "id": "core.great-cleave", "name": "Great Cleave", "types": ["Combat"],
@@ -103,27 +77,46 @@
     ]
   },
   {
-    "id": "core.combat-expertise", "name": "Combat Expertise", "types": ["Combat"],
-    "description": "Trade melee accuracy for a dodge bonus to AC.",
-    "prerequisites": [ { "type": "AbilityScore", "ability": "Intelligence", "value": 13 } ]
+    "id": "core.great-fortitude", "name": "Great Fortitude", "types": ["General"],
+    "description": "Bonus on Fortitude saves.",
+    "modifiers": [ { "stat": "Fortitude", "value": 2, "type": "Untyped" } ]
   },
   {
-    "id": "core.weapon-focus", "name": "Weapon Focus", "types": ["Combat"],
-    "subject": "Weapon",
-    "description": "Choose a weapon. Bonus on attack rolls with it. (Weapon proficiency isn't checked yet.)",
-    "prerequisites": [ { "type": "BaseAttackBonus", "value": 1 } ]
+    "id": "core.improved-channel", "name": "Improved Channel", "types": ["General"],
+    "description": "Raises the save DC of your channel energy.",
+    "prerequisites": [ { "type": "ClassFeature", "name": "Channel Energy" } ]
   },
   {
-    "id": "core.critical-focus", "name": "Critical Focus", "types": ["Combat"],
-    "description": "Bonus on rolls to confirm critical hits.",
-    "prerequisites": [ { "type": "BaseAttackBonus", "value": 9 } ]
+    "id": "core.improved-initiative", "name": "Improved Initiative", "types": ["Combat"],
+    "description": "Bonus on initiative checks.",
+    "modifiers": [ { "stat": "Initiative", "value": 4, "type": "Untyped" } ]
   },
   {
-    "id": "core.bleeding-critical", "name": "Bleeding Critical", "types": ["Combat", "Critical"],
-    "description": "Critical hits with slashing or piercing weapons cause bleeding.",
-    "prerequisites": [
-      { "type": "Feat", "name": "Critical Focus" },
-      { "type": "BaseAttackBonus", "value": 11 }
+    "id": "core.iron-will", "name": "Iron Will", "types": ["General"],
+    "description": "Bonus on Will saves.",
+    "modifiers": [ { "stat": "Will", "value": 2, "type": "Untyped" } ]
+  },
+  {
+    "id": "core.improved-iron-will", "name": "Improved Iron Will", "types": ["General"],
+    "description": "Once per day, reroll a Will save and keep the second result.",
+    "prerequisites": [ { "type": "Feat", "name": "Iron Will" } ]
+  },
+  {
+    "id": "core.leadership", "name": "Leadership", "types": ["General"],
+    "description": "Attract a cohort and followers.",
+    "prerequisites": [ { "type": "CharacterLevel", "value": 7 } ]
+  },
+  {
+    "id": "core.lightning-reflexes", "name": "Lightning Reflexes", "types": ["General"],
+    "description": "Bonus on Reflex saves.",
+    "modifiers": [ { "stat": "Reflex", "value": 2, "type": "Untyped" } ]
+  },
+  {
+    "id": "core.magical-aptitude", "name": "Magical Aptitude", "types": ["General"],
+    "description": "Bonus on Spellcraft and Use Magic Device checks, larger at 10 ranks in the skill.",
+    "modifiers": [
+      { "stat": "Spellcraft", "value": 2, "type": "Untyped", "upgradedValue": 4 },
+      { "stat": "Use Magic Device", "value": 2, "type": "Untyped", "upgradedValue": 4 }
     ]
   },
   {
@@ -132,19 +125,20 @@
     "prerequisites": [ { "type": "SkillRanks", "name": "Ride", "value": 1 } ]
   },
   {
-    "id": "core.disruptive", "name": "Disruptive", "types": ["Combat"],
-    "description": "Raises the DC for enemies to cast defensively within your threatened area.",
-    "prerequisites": [ { "type": "ClassLevel", "name": "Fighter", "value": 6 } ]
+    "id": "core.power-attack", "name": "Power Attack", "types": ["Combat"],
+    "description": "Trade melee accuracy for damage. The trade grows as your base attack bonus rises.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Strength", "value": 13 },
+      { "type": "BaseAttackBonus", "value": 1 }
+    ]
   },
   {
-    "id": "core.leadership", "name": "Leadership", "types": ["General"],
-    "description": "Attract a cohort and followers.",
-    "prerequisites": [ { "type": "CharacterLevel", "value": 7 } ]
-  },
-  {
-    "id": "core.improved-channel", "name": "Improved Channel", "types": ["General"],
-    "description": "Raises the save DC of your channel energy.",
-    "prerequisites": [ { "type": "ClassFeature", "name": "Channel Energy" } ]
+    "id": "core.persuasive", "name": "Persuasive", "types": ["General"],
+    "description": "Bonus on Diplomacy and Intimidate checks, larger at 10 ranks in the skill.",
+    "modifiers": [
+      { "stat": "Diplomacy", "value": 2, "type": "Untyped", "upgradedValue": 4 },
+      { "stat": "Intimidate", "value": 2, "type": "Untyped", "upgradedValue": 4 }
+    ]
   },
   {
     "id": "core.scribe-scroll", "name": "Scribe Scroll", "types": ["ItemCreation"],
@@ -152,13 +146,12 @@
     "prerequisites": [ { "type": "CasterLevel", "value": 1 } ]
   },
   {
-    "id": "core.brew-potion", "name": "Brew Potion", "types": ["ItemCreation"],
-    "description": "Create magic potions.",
-    "prerequisites": [ { "type": "CasterLevel", "value": 3 } ]
-  },
-  {
-    "id": "core.eschew-materials", "name": "Eschew Materials", "types": ["General"],
-    "description": "Cast spells with cheap material components without needing them."
+    "id": "core.skill-focus", "name": "Skill Focus", "types": ["General"],
+    "subject": "Skill",
+    "description": "Choose a skill. Bonus on checks with it, larger at 10 ranks.",
+    "modifiers": [
+      { "stat": "{subject}", "value": 3, "type": "Untyped", "upgradedValue": 6 }
+    ]
   },
   {
     "id": "core.spell-focus", "name": "Spell Focus", "types": ["General"],
@@ -172,16 +165,23 @@
     "prerequisites": [ { "type": "Feat", "name": "Spell Focus", "subject": "{subject}" } ]
   },
   {
+    "id": "core.spell-mastery", "name": "Spell Mastery", "types": ["General"],
+    "description": "Prepare a few known spells without a spellbook.",
+    "prerequisites": [ { "type": "ClassLevel", "name": "Wizard", "value": 1 } ]
+  },
+  {
     "id": "core.spell-penetration", "name": "Spell Penetration", "types": ["General"],
     "description": "Bonus on caster level checks to beat spell resistance."
   },
   {
-    "id": "core.empower-spell", "name": "Empower Spell", "types": ["Metamagic"],
-    "description": "Increase a spell's variable numeric effects by half, using a slot two levels higher."
+    "id": "core.toughness", "name": "Toughness", "types": ["General"],
+    "description": "Extra hit points, with more for each Hit Die beyond 3.",
+    "modifiers": [ { "stat": "HP", "value": 3, "type": "Untyped", "extraPerLevelBeyond": 3 } ]
   },
   {
-    "id": "core.spell-mastery", "name": "Spell Mastery", "types": ["General"],
-    "description": "Prepare a few known spells without a spellbook.",
-    "prerequisites": [ { "type": "ClassLevel", "name": "Wizard", "value": 1 } ]
+    "id": "core.weapon-focus", "name": "Weapon Focus", "types": ["Combat"],
+    "subject": "Weapon",
+    "description": "Choose a weapon. Bonus on attack rolls with it. (Weapon proficiency isn't checked yet.)",
+    "prerequisites": [ { "type": "BaseAttackBonus", "value": 1 } ]
   }
 ]
