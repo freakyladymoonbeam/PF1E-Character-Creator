@@ -3,7 +3,6 @@ Now you can make Pathfinder 1E characters on your desktop!
 
 ## FOLDER STRUCTURE
 PF1E-Character-Creator
-
 	- data
 		- core
 			- classes
