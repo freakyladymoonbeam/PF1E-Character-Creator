@@ -21,8 +21,9 @@ public class Character
     // Modifiers added directly to the character (items, spells, buffs).
     public List<Modifier> Modifiers { get; } = [];
 
-    // Everything affecting the character, including what the race provides.
-    public IEnumerable<Modifier> AllModifiers => Modifiers.Concat(RaceModifiers());
+    // Everything affecting the character: direct modifiers, race, and feats.
+    public IEnumerable<Modifier> AllModifiers =>
+        Modifiers.Concat(RaceModifiers()).Concat(FeatModifiers());
 
     private IEnumerable<Modifier> RaceModifiers()
     {
@@ -35,7 +36,33 @@ public class Character
 
         foreach (var trait in Race.Traits)
             foreach (var m in trait.Modifiers ?? [])
-                yield return new Modifier(m.Stat, m.Value, m.Type, $"{source} ({trait.Name})");
+                yield return ResolveModifier(m, $"{source} ({trait.Name})");
+    }
+
+    private IEnumerable<Modifier> FeatModifiers()
+    {
+        foreach (var choice in Feats)
+            foreach (var m in choice.Feat.Modifiers ?? [])
+                yield return ResolveModifier(m, $"Feat: {choice.Feat.Name}", choice.Subject);
+    }
+
+    // Turns a data definition into a concrete modifier for this character.
+    private Modifier ResolveModifier(ModifierDefinition def, string source, string? subject = null)
+    {
+        string stat = def.Stat == "{subject}"
+            ? subject ?? throw new InvalidOperationException($"{source} needs a choice.")
+            : def.Stat;
+
+        int value = def.Value;
+
+        if (def.UpgradedValue is int upgraded
+            && SkillRanks.GetValueOrDefault(stat) >= def.UpgradeAtRanks)
+            value = upgraded;
+
+        if (def.ExtraPerLevelBeyond is int beyond)
+            value += Math.Max(0, TotalLevel - beyond);
+
+        return new Modifier(stat, value, def.Type, source);
     }
 
     public int Total(string stat) =>
@@ -183,5 +210,79 @@ public class Character
                 $"{skill.Name} ranks must be between 0 and {TotalLevel}.");
 
         SkillRanks[skill.Name] = ranks;
+    }
+
+    // Feats
+    public List<FeatChoice> Feats { get; } = [];
+
+    // One feat at level 1, then one at every odd level.
+    // (Class bonus feats and the Human bonus feat will be tracked separately.)
+    public int FeatSlotsAvailable => (TotalLevel + 1) / 2;
+
+    public int FeatSlotsRemaining => FeatSlotsAvailable - Feats.Count;
+
+    // Highest caster level among the character's spellcasting classes.
+    public int CasterLevel => Classes
+        .Where(c => c.Class.Spellcasting is not null)
+        .Select(c => c.Level)
+        .DefaultIfEmpty(0)
+        .Max();
+
+    public int Initiative =>
+        AbilityModifier(Ability.Dexterity) + Total("Initiative");
+
+    public bool MeetsPrerequisite(PrerequisiteDefinition p)
+    {
+        int value = p.Value ?? 0;
+
+        return p.Type switch
+        {
+            PrerequisiteType.AbilityScore => AbilityScore(p.Ability!.Value) >= value,
+            PrerequisiteType.BaseAttackBonus => BaseAttackBonus >= value,
+            PrerequisiteType.CharacterLevel => TotalLevel >= value,
+            PrerequisiteType.CasterLevel => CasterLevel >= value,
+            PrerequisiteType.ClassLevel =>
+                Classes.Any(c => c.Class.Name == p.Name && c.Level >= value),
+            PrerequisiteType.SkillRanks => SkillRanks.GetValueOrDefault(p.Name!) >= value,
+            PrerequisiteType.Feat => Feats.Any(f => f.Feat.Name == p.Name),
+            PrerequisiteType.ClassFeature => ClassFeatures.Any(f => f.Name == p.Name),
+            _ => throw new InvalidOperationException($"Unknown prerequisite type {p.Type}.")
+        };
+    }
+
+    public IEnumerable<PrerequisiteDefinition> UnmetPrerequisites(FeatDefinition feat) =>
+        (feat.Prerequisites ?? []).Where(p => !MeetsPrerequisite(p));
+
+    // Everything stopping this character from taking the feat. Empty means it's allowed.
+    // A list of reasons (not just true/false) lets the UI explain why a feat is greyed out.
+    public List<string> FeatProblems(FeatDefinition feat, string? subject = null)
+    {
+        var problems = new List<string>();
+
+        if (feat.Subject != FeatSubject.None && subject is null)
+            problems.Add($"{feat.Name} needs a choice of {feat.Subject.ToString().ToLower()}.");
+
+        if (feat.Subject == FeatSubject.None && subject is not null)
+            problems.Add($"{feat.Name} does not take a choice.");
+
+        if (Feats.Any(f => f.Feat.Id == feat.Id && f.Subject == subject))
+            problems.Add($"Already has {feat.Name}.");
+
+        if (FeatSlotsRemaining <= 0)
+            problems.Add("No feat slots remaining.");
+
+        problems.AddRange(UnmetPrerequisites(feat).Select(p => $"Requires {p.Describe()}."));
+
+        return problems;
+    }
+
+    public void AddFeat(FeatDefinition feat, string? subject = null)
+    {
+        var problems = FeatProblems(feat, subject);
+        if (problems.Count > 0)
+            throw new InvalidOperationException(
+                $"Cannot take {feat.Name}: {string.Join(" ", problems)}");
+
+        Feats.Add(new FeatChoice(feat, subject));
     }
 }

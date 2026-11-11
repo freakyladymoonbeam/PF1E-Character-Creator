@@ -30,4 +30,7 @@ public static class DataPackLoader
         return JsonSerializer.Deserialize<T>(stream, Options)
             ?? throw new InvalidDataException($"Could not read '{path}'.");
     }
+
+    // Loads a feat definition list from a JSON file at the specified path.
+    public static List<FeatDefinition> LoadFeats(string path) => Load<List<FeatDefinition>>(path);
 }

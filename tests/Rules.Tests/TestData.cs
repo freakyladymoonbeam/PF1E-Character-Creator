@@ -29,4 +29,10 @@ public static class TestData
     // Returns the skill definition with the specified name.
     public static SkillDefinition Skill(string name) =>
         Skills().Single(s => s.Name == name);
+    
+    public static List<FeatDefinition> Feats() =>
+        DataPackLoader.LoadFeats(DataPath("feats.json"));
+
+    public static FeatDefinition Feat(string name) =>
+        Feats().Single(f => f.Name == name);
 }
