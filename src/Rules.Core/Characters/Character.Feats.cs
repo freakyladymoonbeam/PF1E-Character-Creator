@@ -28,11 +28,28 @@ public partial class Character
             // "Craft|Profession" means ranks in any one of the listed skills.
             PrerequisiteType.SkillRanks =>
                 p.Name!.Split('|').Any(n => SkillRanks.GetValueOrDefault(n) >= value),
-            PrerequisiteType.Feat => Feats.Any(f =>
-                f.Feat.Name == p.Name && SubjectMatches(p.Subject, f.Subject, chosenSubject)),
+            PrerequisiteType.Feat => HasFeat(p, chosenSubject),
             PrerequisiteType.ClassFeature => ClassFeatures.Any(f => f.Name == p.Name),
             _ => throw new InvalidOperationException($"Unknown prerequisite type {p.Type}.")
         };
+    }
+
+    // Feats the character's classes grant automatically (such as a fighter's armor proficiencies).
+    public IEnumerable<string> GrantedFeatNames =>
+        Classes.SelectMany(c => c.Class.GrantedFeats ?? new List<string>());
+
+    // True if the character has the feat, whether taken or granted by a class.
+    // "A|B" in a prerequisite means either feat will do.
+    private bool HasFeat(PrerequisiteDefinition p, string? chosenSubject)
+    {
+        string[] names = p.Name!.Split('|');
+
+        // Feats a class grants have no choice attached.
+        if (p.Subject is null && GrantedFeatNames.Any(g => names.Contains(g)))
+            return true;
+
+        return Feats.Any(f => names.Contains(f.Feat.Name)
+            && SubjectMatches(p.Subject, f.Subject, chosenSubject));
     }
 
     private static bool SubjectMatches(string? required, string? actual, string? chosen)

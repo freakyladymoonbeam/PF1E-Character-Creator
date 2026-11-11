@@ -36,12 +36,14 @@ public record PrerequisiteDefinition(
         _ => Type.ToString()
     };
 
+    // Describes a feat prerequisite, including the chosen subject if applicable.
     private string DescribeFeat(string? chosenSubject)
     {
-        if (Subject is null) return Name!;
+        string name = Name!.Replace("|", " or ");
+        if (Subject is null) return name;
 
         string subject = Subject == "{subject}" ? chosenSubject ?? "same choice" : Subject;
-        return $"{Name} ({subject})";
+        return $"{name} ({subject})";
     }
 }
 

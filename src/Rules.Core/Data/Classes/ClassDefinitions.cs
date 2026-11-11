@@ -26,7 +26,8 @@ public record ClassDefinition(
     List<string> ArmorProficiencies,
     StartingWealth StartingWealth,
     List<ClassFeatureDefinition> Features,
-    SpellcastingDefinition? Spellcasting = null)
+    SpellcastingDefinition? Spellcasting = null,
+    List<string>? GrantedFeats = null)   // feats the class gives automatically (e.g. armor proficiencies)
 {
     // Checks if the class allows a specific alignment.
     public bool AllowsAlignment(Alignment alignment) =>
