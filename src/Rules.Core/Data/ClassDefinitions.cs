@@ -31,6 +31,14 @@ public record ClassDefinition(
     // Checks if the class allows a specific alignment.
     public bool AllowsAlignment(Alignment alignment) =>
         AllowedAlignments.Contains(alignment);
+    
+    // Fixed (average) roll per level: d6 gives 4, d8 gives 5, d10 gives 6, d12 gives 7.
+    public int AverageHitPointRoll => HitDie / 2 + 1;
+
+    // "Knowledge (all)" in a class skill list covers every Knowledge skill.
+    public bool IsClassSkill(string skillName) =>
+        ClassSkills.Contains(skillName)
+        || (skillName.StartsWith("Knowledge (") && ClassSkills.Contains("Knowledge (all)"));
 
     // Calculates the base attack bonus for a given level based on the class's progression.
     public int BaseAttackBonusAt(int level) => level <= 0 ? 0 : BabProgression switch
@@ -47,4 +55,19 @@ public record ClassDefinition(
 }
 
 // Represents a character's level in a specific class, including the class definition and the level attained.
-public record ClassLevel(ClassDefinition Class, int Level);
+public record ClassLevel(ClassDefinition Class, int Level, List<int>? HitPointRolls = null)
+{
+    // Roll for one level of this class (1-based). Uses the average if none was recorded.
+    public int HitPointRoll(int level)
+    {
+        if (HitPointRolls is null || level > HitPointRolls.Count)
+            return Class.AverageHitPointRoll;
+
+        int roll = HitPointRolls[level - 1];
+        if (roll < 1 || roll > Class.HitDie)
+            throw new ArgumentOutOfRangeException(nameof(level),
+                $"Recorded roll {roll} is not valid for a d{Class.HitDie}.");
+
+        return roll;
+    }
+}

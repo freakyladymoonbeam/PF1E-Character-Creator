@@ -20,6 +20,9 @@ public static class DataPackLoader
     // Loads a class definition from a JSON file at the specified path.
     public static ClassDefinition LoadClass(string path) => Load<ClassDefinition>(path);
 
+    // Loads a skill definition list from a JSON file at the specified path.    
+    public static List<SkillDefinition> LoadSkills(string path) => Load<List<SkillDefinition>>(path);
+
     // Loads a generic data pack from a JSON file at the specified path.
     private static T Load<T>(string path)
     {

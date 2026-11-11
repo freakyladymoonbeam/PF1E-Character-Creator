@@ -112,4 +112,76 @@ public class Character
 
         return 10 + spellLevel + AbilityModifier(casting.CastingAbility);
     }
+
+    // Hit points
+    public int MaxHitPoints
+    {
+        get
+        {
+            int conModifier = AbilityModifier(Ability.Constitution);
+            int total = 0;
+
+            for (int c = 0; c < Classes.Count; c++)
+            {
+                for (int level = 1; level <= Classes[c].Level; level++)
+                {
+                    // Only the very first level of the first class gets maximum HP.
+                    bool isCharacterLevelOne = c == 0 && level == 1;
+                    int roll = isCharacterLevelOne
+                        ? Classes[c].Class.HitDie
+                        : Classes[c].HitPointRoll(level);
+
+                    total += Math.Max(1, roll + conModifier);
+                }
+            }
+
+            return total + Total("HP");
+        }
+    }
+
+    // Skills
+    public Dictionary<string, int> SkillRanks { get; } = [];
+
+    public int RanksIn(SkillDefinition skill) =>
+        SkillRanks.GetValueOrDefault(skill.Name);
+
+    public bool IsClassSkill(SkillDefinition skill) =>
+        Classes.Any(c => c.Class.IsClassSkill(skill.Name));
+
+    public bool CanUse(SkillDefinition skill) =>
+        !skill.TrainedOnly || RanksIn(skill) > 0;
+
+    public int SkillBonus(SkillDefinition skill)
+    {
+        int ranks = RanksIn(skill);
+        int classSkillBonus = ranks > 0 && IsClassSkill(skill) ? 3 : 0;
+
+        return ranks + classSkillBonus
+            + AbilityModifier(skill.Ability)
+            + Total(skill.Name);
+    }
+
+    // Each level gives class ranks + Int modifier, with a minimum of 1 per level.
+    public int SkillRanksAvailable
+    {
+        get
+        {
+            int intModifier = AbilityModifier(Ability.Intelligence);
+            return Classes.Sum(c => c.Level * Math.Max(1, c.Class.SkillRanksPerLevel + intModifier));
+        }
+    }
+
+    public int SkillRanksSpent => SkillRanks.Values.Sum();
+
+    public int SkillRanksRemaining => SkillRanksAvailable - SkillRanksSpent;
+
+    public void SetSkillRanks(SkillDefinition skill, int ranks)
+    {
+        // You can't have more ranks in a skill than your total level.
+        if (ranks < 0 || ranks > TotalLevel)
+            throw new ArgumentOutOfRangeException(nameof(ranks),
+                $"{skill.Name} ranks must be between 0 and {TotalLevel}.");
+
+        SkillRanks[skill.Name] = ranks;
+    }
 }

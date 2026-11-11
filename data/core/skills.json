@@ -1,0 +1,212 @@
+[
+  { 
+    "name": "Acrobatics",
+    "ability": "Dexterity",
+    "trainedOnly": false,
+    "armorCheckPenalty": true
+  },
+  { 
+    "name": "Appraise",
+    "ability": "Intelligence",
+    "trainedOnly": false,
+    "armorCheckPenalty": false
+  },
+  { 
+    "name": "Bluff",
+    "ability": "Charisma",
+    "trainedOnly": false,
+    "armorCheckPenalty": false
+  },
+  { 
+    "name": "Climb",
+    "ability": "Strength",
+    "trainedOnly": false,
+    "armorCheckPenalty": true
+  },
+  { 
+    "name": "Craft",
+    "ability": "Intelligence",
+    "trainedOnly": false,
+    "armorCheckPenalty": false
+  },
+  { 
+    "name": "Diplomacy",
+    "ability": "Charisma",
+    "trainedOnly": false,
+    "armorCheckPenalty": false
+  },
+  { 
+    "name": "Disable Device",
+    "ability": "Dexterity",
+    "trainedOnly": true,
+    "armorCheckPenalty": true
+  },
+  { 
+    "name": "Disguise",
+    "ability": "Charisma",
+    "trainedOnly": false,
+    "armorCheckPenalty": false
+  },
+  { 
+    "name": "Escape Artist",
+    "ability": "Dexterity",
+    "trainedOnly": false,
+    "armorCheckPenalty": true
+  },
+  { 
+    "name": "Fly",
+    "ability": "Dexterity",
+    "trainedOnly": false,
+    "armorCheckPenalty": true
+  },
+  { 
+    "name": "Handle Animal",
+    "ability": "Charisma",
+    "trainedOnly": true,
+    "armorCheckPenalty": false
+  },
+  { 
+    "name": "Heal",
+    "ability": "Wisdom",
+    "trainedOnly": false,
+    "armorCheckPenalty": false
+  },
+  { 
+    "name": "Intimidate",
+    "ability": "Charisma",
+    "trainedOnly": false,
+    "armorCheckPenalty": false
+  },
+  { 
+    "name": "Knowledge (arcana)",
+    "ability": "Intelligence",
+    "trainedOnly": true,
+    "armorCheckPenalty": false
+  },
+  { 
+    "name": "Knowledge (dungeoneering)",
+    "ability": "Intelligence",
+    "trainedOnly": true,
+    "armorCheckPenalty": false
+  },
+  { 
+    "name": "Knowledge (engineering)",
+    "ability": "Intelligence",
+    "trainedOnly": true,
+    "armorCheckPenalty": false
+  },
+  { 
+    "name": "Knowledge (geography)",
+    "ability": "Intelligence",
+    "trainedOnly": true,
+    "armorCheckPenalty": false
+  },
+  { 
+    "name": "Knowledge (history)",
+    "ability": "Intelligence",
+    "trainedOnly": true,
+    "armorCheckPenalty": false
+  },
+  { 
+    "name": "Knowledge (local)",
+    "ability": "Intelligence",
+    "trainedOnly": true,
+    "armorCheckPenalty": false
+  },
+  { 
+    "name": "Knowledge (nature)",
+    "ability": "Intelligence",
+    "trainedOnly": true,
+    "armorCheckPenalty": false
+  },
+  { 
+    "name": "Knowledge (nobility)",
+    "ability": "Intelligence",
+    "trainedOnly": true,
+    "armorCheckPenalty": false
+  },
+  { 
+    "name": "Knowledge (planes)",
+    "ability": "Intelligence",
+    "trainedOnly": true,
+    "armorCheckPenalty": false
+  },
+  { 
+    "name": "Knowledge (religion)",
+    "ability": "Intelligence",
+    "trainedOnly": true,
+    "armorCheckPenalty": false
+  },
+  { 
+    "name": "Linguistics",
+    "ability": "Intelligence",
+    "trainedOnly": true,
+    "armorCheckPenalty": false
+  },
+  { 
+    "name": "Perception",
+    "ability": "Wisdom",
+    "trainedOnly": false,
+    "armorCheckPenalty": false
+  },
+  { 
+    "name": "Perform",
+    "ability": "Charisma",
+    "trainedOnly": false,
+    "armorCheckPenalty": false
+  },
+  { 
+    "name": "Profession",
+    "ability": "Wisdom",
+    "trainedOnly": true,
+    "armorCheckPenalty": false
+  },
+  { 
+    "name": "Ride",
+    "ability": "Dexterity",
+    "trainedOnly": false,
+    "armorCheckPenalty": true
+  },
+  { 
+    "name": "Sense Motive",
+    "ability": "Wisdom",
+    "trainedOnly": false,
+    "armorCheckPenalty": false
+  },
+  { 
+    "name": "Sleight of Hand",
+    "ability": "Dexterity",
+    "trainedOnly": true,
+    "armorCheckPenalty": true
+  },
+  { 
+    "name": "Spellcraft",
+    "ability": "Intelligence",
+    "trainedOnly": true,
+    "armorCheckPenalty": false
+  },
+  { 
+    "name": "Stealth",
+    "ability": "Dexterity",
+    "trainedOnly": false,
+    "armorCheckPenalty": true
+  },
+  { 
+    "name": "Survival",
+    "ability": "Wisdom",
+    "trainedOnly": false,
+    "armorCheckPenalty": false
+  },
+  { 
+    "name": "Swim",
+    "ability": "Strength",
+    "trainedOnly": false,
+    "armorCheckPenalty": true
+  },
+  { 
+    "name": "Use Magic Device",
+    "ability": "Charisma",
+    "trainedOnly": true,
+    "armorCheckPenalty": false
+  }
+]
