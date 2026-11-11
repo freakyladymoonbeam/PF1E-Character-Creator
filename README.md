@@ -7,19 +7,19 @@ Now you can make Pathfinder 1E characters on your desktop!
 	    	- core
 		    	- classes
     		    	- fighter.json
-    			    - wizard.json
+                    - wizard.json
         		- feats
         			- 01-starter.json
     	    		- 02-general.json
     		    	- 03-combat-melee.json
         		- races
-        			- elf.json
+                    - elf.json
     	    	- skills.json
         - src
         	- Rules.Core
     	    	- bin
     		    - Characters
-    			    - Ability.cs
+                    - Ability.cs
         			- Alignment.cs
         			- Character.Abilities.cs
     	    		- Character.Classes.cs
