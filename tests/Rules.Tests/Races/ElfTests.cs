@@ -3,7 +3,7 @@ using Rules.Core.Data;
 
 namespace Rules.Tests;
 
-public class RaceTests
+public class ElfTests
 {
     // Loads the Elf race definition from the JSON data file.
     private static RaceDefinition LoadElf() => DataPackLoader.LoadRace(
@@ -44,9 +44,9 @@ public class RaceTests
         Assert.Equal(2, character.Total("Perception"));
     }
 
-    // Verifies that racial bonuses stack correctly with enhancement bonuses.
+    // Verifies that the Elf's racial bonus stacks correctly with enhancement bonuses.
     [Fact]
-    public void RacialBonus_StacksWithEnhancementBonus()
+    public void Elf_RacialBonus_StacksWithEnhancementBonus()
     {
         var character = new Character { Race = LoadElf() };
         character.BaseAbilityScores[Ability.Dexterity] = 14;

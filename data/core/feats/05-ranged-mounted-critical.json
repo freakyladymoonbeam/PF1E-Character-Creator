@@ -1,0 +1,221 @@
+[
+  {
+    "id": "core.arcane-strike", "name": "Arcane Strike", "types": ["Combat"],
+    "description": "As a swift action, your weapons deal +1 damage for 1 round and count as magic against damage reduction. The bonus rises by 1 per five caster levels, to +5 at 20th.",
+    "prerequisites": [ { "type": "SpellcastingType", "name": "Arcane" } ]
+  },
+  {
+    "id": "core.channel-smite", "name": "Channel Smite", "types": ["Combat"],
+    "description": "Spend a channel energy use as a swift action before a melee attack to add the channeled damage to a hit on an undead (positive) or living (negative) target. The target can make a Will save to halve it. A miss wastes the use.",
+    "prerequisites": [ { "type": "ClassFeature", "name": "Channel Energy" } ]
+  },
+  {
+    "id": "core.combat-casting", "name": "Combat Casting", "types": ["General"],
+    "description": "+4 bonus on concentration checks to cast defensively or while grappled."
+  },
+  {
+    "id": "core.deadly-aim", "name": "Deadly Aim", "types": ["Combat"],
+    "description": "Take a -1 penalty on ranged attack rolls for +2 damage. The trade grows as your base attack bonus rises.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Dexterity", "value": 13 },
+      { "type": "BaseAttackBonus", "value": 1 }
+    ]
+  },
+  {
+    "id": "core.spellbreaker", "name": "Spellbreaker", "types": ["Combat"],
+    "description": "Enemies in your threatened area that fail to cast defensively provoke attacks of opportunity from you.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Disruptive" },
+      { "type": "ClassLevel", "name": "Fighter", "value": 10 }
+    ]
+  },
+
+  {
+    "id": "core.sickening-critical", "name": "Sickening Critical", "types": ["Combat", "Critical"],
+    "description": "Your critical hits make the target sickened for 1 minute.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Critical Focus" },
+      { "type": "BaseAttackBonus", "value": 11 }
+    ]
+  },
+  {
+    "id": "core.staggering-critical", "name": "Staggering Critical", "types": ["Combat", "Critical"],
+    "description": "Your critical hits stagger the target for 1d4+1 rounds. A Fortitude save reduces this to 1 round.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Critical Focus" },
+      { "type": "BaseAttackBonus", "value": 13 }
+    ]
+  },
+  {
+    "id": "core.tiring-critical", "name": "Tiring Critical", "types": ["Combat", "Critical"],
+    "description": "Your critical hits make the target fatigued.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Critical Focus" },
+      { "type": "BaseAttackBonus", "value": 13 }
+    ]
+  },
+  {
+    "id": "core.deafening-critical", "name": "Deafening Critical", "types": ["Combat", "Critical"],
+    "description": "Your critical hits permanently deafen the target. A Fortitude save reduces this to 1 round.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Critical Focus" },
+      { "type": "BaseAttackBonus", "value": 13 }
+    ]
+  },
+  {
+    "id": "core.blinding-critical", "name": "Blinding Critical", "types": ["Combat", "Critical"],
+    "description": "Your critical hits permanently blind the target. A Fortitude save reduces this to dazzled for 1d4 rounds.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Critical Focus" },
+      { "type": "BaseAttackBonus", "value": 15 }
+    ]
+  },
+  {
+    "id": "core.stunning-critical", "name": "Stunning Critical", "types": ["Combat", "Critical"],
+    "description": "Your critical hits stun the target for 1d4 rounds. A Fortitude save reduces this to staggered for 1d4 rounds.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Critical Focus" },
+      { "type": "Feat", "name": "Staggering Critical" },
+      { "type": "BaseAttackBonus", "value": 17 }
+    ]
+  },
+  {
+    "id": "core.exhausting-critical", "name": "Exhausting Critical", "types": ["Combat", "Critical"],
+    "description": "Your critical hits make the target exhausted.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Critical Focus" },
+      { "type": "Feat", "name": "Tiring Critical" },
+      { "type": "BaseAttackBonus", "value": 15 }
+    ]
+  },
+  {
+    "id": "core.critical-mastery", "name": "Critical Mastery", "types": ["Combat"],
+    "description": "Apply the effects of two critical feats to a critical hit instead of one.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Critical Focus" },
+      { "type": "FeatsOfType", "name": "Critical", "value": 2 },
+      { "type": "ClassLevel", "name": "Fighter", "value": 14 }
+    ]
+  },
+
+  {
+    "id": "core.mounted-archery", "name": "Mounted Archery", "types": ["Combat"],
+    "description": "Halve the penalty for ranged attacks while mounted.",
+    "prerequisites": [
+      { "type": "SkillRanks", "name": "Ride", "value": 1 },
+      { "type": "Feat", "name": "Mounted Combat" }
+    ]
+  },
+  {
+    "id": "core.ride-by-attack", "name": "Ride-By Attack", "types": ["Combat"],
+    "description": "While mounted and charging, move, strike, and keep moving, without provoking from the foe you attack.",
+    "prerequisites": [
+      { "type": "SkillRanks", "name": "Ride", "value": 1 },
+      { "type": "Feat", "name": "Mounted Combat" }
+    ]
+  },
+  {
+    "id": "core.spirited-charge", "name": "Spirited Charge", "types": ["Combat"],
+    "description": "Your mounted charge deals double damage with a melee weapon (triple with a lance).",
+    "prerequisites": [
+      { "type": "SkillRanks", "name": "Ride", "value": 1 },
+      { "type": "Feat", "name": "Mounted Combat" },
+      { "type": "Feat", "name": "Ride-By Attack" }
+    ]
+  },
+  {
+    "id": "core.trample", "name": "Trample", "types": ["Combat"],
+    "description": "While mounted, your overrun targets can't avoid you, and your mount gets a hoof attack against any foe you knock down.",
+    "prerequisites": [
+      { "type": "SkillRanks", "name": "Ride", "value": 1 },
+      { "type": "Feat", "name": "Mounted Combat" }
+    ]
+  },
+  {
+    "id": "core.unseat", "name": "Unseat", "types": ["Combat"],
+    "description": "A lance charge that hits can also make a free bull rush to knock a mounted foe off its mount.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Strength", "value": 13 },
+      { "type": "SkillRanks", "name": "Ride", "value": 1 },
+      { "type": "Feat", "name": "Mounted Combat" },
+      { "type": "Feat", "name": "Power Attack" },
+      { "type": "Feat", "name": "Improved Bull Rush" },
+      { "type": "BaseAttackBonus", "value": 1 }
+    ]
+  },
+
+  {
+    "id": "core.point-blank-shot", "name": "Point-Blank Shot", "types": ["Combat"],
+    "description": "+1 bonus on attack and damage rolls with ranged weapons against targets within 30 feet."
+  },
+  {
+    "id": "core.far-shot", "name": "Far Shot", "types": ["Combat"],
+    "description": "Take only a -1 penalty per range increment instead of -2.",
+    "prerequisites": [ { "type": "Feat", "name": "Point-Blank Shot" } ]
+  },
+  {
+    "id": "core.precise-shot", "name": "Precise Shot", "types": ["Combat"],
+    "description": "No -4 penalty for shooting or throwing at a foe engaged in melee.",
+    "prerequisites": [ { "type": "Feat", "name": "Point-Blank Shot" } ]
+  },
+  {
+    "id": "core.improved-precise-shot", "name": "Improved Precise Shot", "types": ["Combat"],
+    "description": "Your ranged attacks ignore the AC bonus from anything less than total cover and the miss chance from anything less than total concealment.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Dexterity", "value": 19 },
+      { "type": "Feat", "name": "Point-Blank Shot" },
+      { "type": "Feat", "name": "Precise Shot" },
+      { "type": "BaseAttackBonus", "value": 11 }
+    ]
+  },
+  {
+    "id": "core.pinpoint-targeting", "name": "Pinpoint Targeting", "types": ["Combat"],
+    "description": "As a standard action, make one ranged attack against which the target gets no armor, natural armor, or shield bonus to AC. You can't have moved this round.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Dexterity", "value": 19 },
+      { "type": "Feat", "name": "Improved Precise Shot" },
+      { "type": "Feat", "name": "Point-Blank Shot" },
+      { "type": "Feat", "name": "Precise Shot" },
+      { "type": "BaseAttackBonus", "value": 16 }
+    ]
+  },
+  {
+    "id": "core.shot-on-the-run", "name": "Shot on the Run", "types": ["Combat"],
+    "description": "As a full-round action, move up to your speed and make one ranged attack at any point during the movement.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Dexterity", "value": 13 },
+      { "type": "Feat", "name": "Dodge" },
+      { "type": "Feat", "name": "Mobility" },
+      { "type": "Feat", "name": "Point-Blank Shot" },
+      { "type": "BaseAttackBonus", "value": 4 }
+    ]
+  },
+  {
+    "id": "core.rapid-shot", "name": "Rapid Shot", "types": ["Combat"],
+    "description": "On a full attack with a ranged weapon, fire one extra time at your highest bonus, with a -2 penalty on all attacks.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Dexterity", "value": 13 },
+      { "type": "Feat", "name": "Point-Blank Shot" }
+    ]
+  },
+  {
+    "id": "core.manyshot", "name": "Manyshot", "types": ["Combat"],
+    "description": "On a full attack with a bow, your first attack fires two arrows. If it hits, both hit.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Dexterity", "value": 17 },
+      { "type": "Feat", "name": "Point-Blank Shot" },
+      { "type": "Feat", "name": "Rapid Shot" },
+      { "type": "BaseAttackBonus", "value": 6 }
+    ]
+  },
+  {
+    "id": "core.quick-draw", "name": "Quick Draw", "types": ["Combat"],
+    "description": "Draw a weapon as a free action, and throw weapons at your full rate of attacks.",
+    "prerequisites": [ { "type": "BaseAttackBonus", "value": 1 } ]
+  },
+  {
+    "id": "core.rapid-reload", "name": "Rapid Reload", "types": ["Combat"],
+    "subject": "Weapon",
+    "description": "Choose hand, light, or heavy crossbow. Reload it much faster (a free action for hand and light, a move action for heavy). Needs proficiency with that crossbow, which isn't checked yet."
+  }
+]

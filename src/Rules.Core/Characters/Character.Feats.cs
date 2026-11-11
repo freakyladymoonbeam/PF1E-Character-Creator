@@ -30,6 +30,16 @@ public partial class Character
                 p.Name!.Split('|').Any(n => SkillRanks.GetValueOrDefault(n) >= value),
             PrerequisiteType.Feat => HasFeat(p, chosenSubject),
             PrerequisiteType.ClassFeature => ClassFeatures.Any(f => f.Name == p.Name),
+            PrerequisiteType.SpellcastingType => Classes.Any(c =>
+                c.Class.Spellcasting is { } casting
+                && casting.MagicType == Enum.Parse<MagicType>(p.Name!)
+                && casting.CanCastAt(c.Level)),
+            // "Critical" counts how many different feats of that type the character has.
+            PrerequisiteType.FeatsOfType =>
+                Feats.Where(f => f.Feat.Types.Contains(Enum.Parse<FeatType>(p.Name!)))
+                     .Select(f => f.Feat.Id)
+                     .Distinct()
+                     .Count() >= value,
             _ => throw new InvalidOperationException($"Unknown prerequisite type {p.Type}.")
         };
     }

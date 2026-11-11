@@ -20,6 +20,12 @@ public record SpellcastingDefinition(
         return spellLevel >= 0 && spellLevel < row.Count ? row[spellLevel] : null;
     }
 
+    // True if a class of this level has at least one spell slot to cast with.
+    public bool CanCastAt(int classLevel) =>
+        classLevel >= 1
+        && classLevel <= SpellsPerDay.Count
+        && SpellsPerDay[classLevel - 1].Any(slots => slots > 0);
+
     // Bonus spells from a high casting ability. Cantrips never get any.
     public static int BonusSpells(int abilityModifier, int spellLevel) =>
         spellLevel < 1 || abilityModifier < spellLevel

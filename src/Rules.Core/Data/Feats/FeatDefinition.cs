@@ -10,8 +10,16 @@ public enum FeatSubject
 
 public enum PrerequisiteType
 {
-    AbilityScore, BaseAttackBonus, Feat, ClassLevel,
-    CasterLevel, CharacterLevel, SkillRanks, ClassFeature
+    AbilityScore,
+    BaseAttackBonus,
+    Feat,
+    ClassLevel,
+    CasterLevel,
+    CharacterLevel,
+    SkillRanks,
+    ClassFeature,
+    SpellcastingType,
+    FeatsOfType
 }
 
 public record PrerequisiteDefinition(
@@ -33,6 +41,8 @@ public record PrerequisiteDefinition(
         PrerequisiteType.SkillRanks => $"{Value} rank(s) in {Name!.Replace("|", " or ")}",
         PrerequisiteType.Feat => DescribeFeat(chosenSubject),
         PrerequisiteType.ClassFeature => $"{Name} class feature",
+        PrerequisiteType.SpellcastingType => $"ability to cast {Name!.ToLower()} spells",
+        PrerequisiteType.FeatsOfType => $"any {Value} {Name} feats",
         _ => Type.ToString()
     };
 

@@ -24,7 +24,7 @@ public class FeatTests
     {
         var feats = TestData.Feats();
 
-        Assert.Equal(147, feats.Count);
+        Assert.Equal(175, feats.Count);
         Assert.Equal(feats.Count, feats.Select(f => f.Id).Distinct().Count());
         Assert.Equal(feats.Count, feats.Select(f => f.Name).Distinct().Count());
 
