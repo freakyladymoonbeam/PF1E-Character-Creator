@@ -30,9 +30,11 @@ public static class TestData
     public static SkillDefinition Skill(string name) =>
         Skills().Single(s => s.Name == name);
     
+    // Returns the list of all predefined feat definitions.
     public static List<FeatDefinition> Feats() =>
-        DataPackLoader.LoadFeats(DataPath("feats.json"));
+        DataPackLoader.LoadFeatsFromFolder(DataPath("feats"));
 
+    // Returns the feat definition with the specified name.
     public static FeatDefinition Feat(string name) =>
         Feats().Single(f => f.Name == name);
 }

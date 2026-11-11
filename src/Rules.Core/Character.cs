@@ -231,7 +231,7 @@ public class Character
     public int Initiative =>
         AbilityModifier(Ability.Dexterity) + Total("Initiative");
 
-    public bool MeetsPrerequisite(PrerequisiteDefinition p)
+    public bool MeetsPrerequisite(PrerequisiteDefinition p, string? chosenSubject = null)
     {
         int value = p.Value ?? 0;
 
@@ -243,18 +243,29 @@ public class Character
             PrerequisiteType.CasterLevel => CasterLevel >= value,
             PrerequisiteType.ClassLevel =>
                 Classes.Any(c => c.Class.Name == p.Name && c.Level >= value),
-            PrerequisiteType.SkillRanks => SkillRanks.GetValueOrDefault(p.Name!) >= value,
-            PrerequisiteType.Feat => Feats.Any(f => f.Feat.Name == p.Name),
+            // "Craft|Profession" means ranks in any one of the listed skills.
+            PrerequisiteType.SkillRanks =>
+                p.Name!.Split('|').Any(n => SkillRanks.GetValueOrDefault(n) >= value),
+            PrerequisiteType.Feat => Feats.Any(f =>
+                f.Feat.Name == p.Name && SubjectMatches(p.Subject, f.Subject, chosenSubject)),
             PrerequisiteType.ClassFeature => ClassFeatures.Any(f => f.Name == p.Name),
             _ => throw new InvalidOperationException($"Unknown prerequisite type {p.Type}.")
         };
     }
 
-    public IEnumerable<PrerequisiteDefinition> UnmetPrerequisites(FeatDefinition feat) =>
-        (feat.Prerequisites ?? []).Where(p => !MeetsPrerequisite(p));
+    private static bool SubjectMatches(string? required, string? actual, string? chosen)
+    {
+        if (required is null) return true;
+
+        string wanted = required == "{subject}" ? chosen ?? "" : required;
+        return string.Equals(actual, wanted, StringComparison.OrdinalIgnoreCase);
+    }
+
+    public IEnumerable<PrerequisiteDefinition> UnmetPrerequisites(
+        FeatDefinition feat, string? subject = null) =>
+        (feat.Prerequisites ?? []).Where(p => !MeetsPrerequisite(p, subject));
 
     // Everything stopping this character from taking the feat. Empty means it's allowed.
-    // A list of reasons (not just true/false) lets the UI explain why a feat is greyed out.
     public List<string> FeatProblems(FeatDefinition feat, string? subject = null)
     {
         var problems = new List<string>();
@@ -265,13 +276,18 @@ public class Character
         if (feat.Subject == FeatSubject.None && subject is not null)
             problems.Add($"{feat.Name} does not take a choice.");
 
-        if (Feats.Any(f => f.Feat.Id == feat.Id && f.Subject == subject))
+        bool alreadyTaken = Feats.Any(f => f.Feat.Id == feat.Id
+            && string.Equals(f.Subject, subject, StringComparison.OrdinalIgnoreCase));
+        bool duplicateAllowed = feat.Repeatable && feat.Subject == FeatSubject.None;
+
+        if (alreadyTaken && !duplicateAllowed)
             problems.Add($"Already has {feat.Name}.");
 
         if (FeatSlotsRemaining <= 0)
             problems.Add("No feat slots remaining.");
 
-        problems.AddRange(UnmetPrerequisites(feat).Select(p => $"Requires {p.Describe()}."));
+        problems.AddRange(
+            UnmetPrerequisites(feat, subject).Select(p => $"Requires {p.Describe(subject)}."));
 
         return problems;
     }

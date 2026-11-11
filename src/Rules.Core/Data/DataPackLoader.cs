@@ -33,4 +33,11 @@ public static class DataPackLoader
 
     // Loads a feat definition list from a JSON file at the specified path.
     public static List<FeatDefinition> LoadFeats(string path) => Load<List<FeatDefinition>>(path);
+
+    // Loads every .json file in a folder (in name order) as one combined feat list.
+    public static List<FeatDefinition> LoadFeatsFromFolder(string folder) =>
+        Directory.GetFiles(folder, "*.json")
+            .OrderBy(f => f, StringComparer.OrdinalIgnoreCase)
+            .SelectMany(f => Load<List<FeatDefinition>>(f))
+            .ToList();
 }

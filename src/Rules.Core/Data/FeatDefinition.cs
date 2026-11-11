@@ -2,8 +2,11 @@ namespace Rules.Core.Data;
 
 public enum FeatType { General, Combat, Critical, ItemCreation, Metamagic }
 
-// What a feat asks you to choose when you take it (Skill Focus: a skill).
-public enum FeatSubject { None, Skill, Weapon, SpellSchool }
+// What a feat asks you to choose when you take it.
+public enum FeatSubject
+{
+    None, Skill, Weapon, SpellSchool, AlignmentSubtype, ElementalSubtype, Mercy
+}
 
 public enum PrerequisiteType
 {
@@ -15,20 +18,31 @@ public record PrerequisiteDefinition(
     PrerequisiteType Type,
     Ability? Ability = null,
     int? Value = null,
-    string? Name = null)
+    string? Name = null,
+    // For Feat prerequisites: a specific choice ("Conjuration"), or "{subject}"
+    // meaning the same choice as the feat being taken.
+    string? Subject = null)
 {
-    public string Describe() => Type switch
+    public string Describe(string? chosenSubject = null) => Type switch
     {
         PrerequisiteType.AbilityScore => $"{Ability!.Value.ToString()[..3]} {Value}",
         PrerequisiteType.BaseAttackBonus => $"base attack bonus +{Value}",
         PrerequisiteType.CharacterLevel => $"character level {Value}",
         PrerequisiteType.CasterLevel => $"caster level {Value}",
         PrerequisiteType.ClassLevel => $"{Name} level {Value}",
-        PrerequisiteType.SkillRanks => $"{Value} rank(s) in {Name}",
-        PrerequisiteType.Feat => Name!,
+        PrerequisiteType.SkillRanks => $"{Value} rank(s) in {Name!.Replace("|", " or ")}",
+        PrerequisiteType.Feat => DescribeFeat(chosenSubject),
         PrerequisiteType.ClassFeature => $"{Name} class feature",
         _ => Type.ToString()
     };
+
+    private string DescribeFeat(string? chosenSubject)
+    {
+        if (Subject is null) return Name!;
+
+        string subject = Subject == "{subject}" ? chosenSubject ?? "same choice" : Subject;
+        return $"{Name} ({subject})";
+    }
 }
 
 public record FeatDefinition(
@@ -38,7 +52,8 @@ public record FeatDefinition(
     string Description,
     List<PrerequisiteDefinition>? Prerequisites = null,
     FeatSubject Subject = FeatSubject.None,
-    List<ModifierDefinition>? Modifiers = null);
+    List<ModifierDefinition>? Modifiers = null,
+    bool Repeatable = false);   // can be taken more than once, with effects that stack
 
 // A feat as taken by a character, with its choice (if any).
 public record FeatChoice(FeatDefinition Feat, string? Subject = null);

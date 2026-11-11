@@ -169,7 +169,7 @@
     "id": "core.greater-spell-focus", "name": "Greater Spell Focus", "types": ["General"],
     "subject": "SpellSchool",
     "description": "Choose a school you already have Spell Focus in. Another bonus to its save DCs.",
-    "prerequisites": [ { "type": "Feat", "name": "Spell Focus" } ]
+    "prerequisites": [ { "type": "Feat", "name": "Spell Focus", "subject": "{subject}" } ]
   },
   {
     "id": "core.spell-penetration", "name": "Spell Penetration", "types": ["General"],
