@@ -114,6 +114,7 @@ public class GeneralFeatTests
 
     // ---- Feat chains and misc prerequisites ----
 
+    // Verifies that the Improved Great Fortitude feat requires Great Fortitude and adds no bonus itself.
     [Fact]
     public void ImprovedGreatFortitude_NeedsGreatFortitude_AndAddsNoBonusItself()
     {

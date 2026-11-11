@@ -1,0 +1,277 @@
+[
+  {
+    "id": "core.greater-weapon-focus", "name": "Greater Weapon Focus", "types": ["Combat"],
+    "subject": "Weapon",
+    "description": "Choose a weapon you have Weapon Focus in. Another +1 bonus on attack rolls with it.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Weapon Focus", "subject": "{subject}" },
+      { "type": "ClassLevel", "name": "Fighter", "value": 8 }
+    ]
+  },
+  {
+    "id": "core.weapon-specialization", "name": "Weapon Specialization", "types": ["Combat"],
+    "subject": "Weapon",
+    "description": "Choose a weapon you have Weapon Focus in. +2 bonus on damage rolls with it.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Weapon Focus", "subject": "{subject}" },
+      { "type": "ClassLevel", "name": "Fighter", "value": 4 }
+    ]
+  },
+  {
+    "id": "core.greater-weapon-specialization", "name": "Greater Weapon Specialization", "types": ["Combat"],
+    "subject": "Weapon",
+    "description": "Choose a weapon you have Weapon Specialization in. Another +2 bonus on damage rolls with it.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Weapon Focus", "subject": "{subject}" },
+      { "type": "Feat", "name": "Greater Weapon Focus", "subject": "{subject}" },
+      { "type": "Feat", "name": "Weapon Specialization", "subject": "{subject}" },
+      { "type": "ClassLevel", "name": "Fighter", "value": 12 }
+    ]
+  },
+  {
+    "id": "core.penetrating-strike", "name": "Penetrating Strike", "types": ["Combat"],
+    "description": "Attacks with your Weapon Focus weapons ignore up to 5 points of damage reduction (not DR without a type).",
+    "prerequisites": [
+      { "type": "Feat", "name": "Weapon Focus" },
+      { "type": "ClassLevel", "name": "Fighter", "value": 12 }
+    ]
+  },
+  {
+    "id": "core.greater-penetrating-strike", "name": "Greater Penetrating Strike", "types": ["Combat"],
+    "description": "Attacks with your Weapon Focus weapons ignore up to 10 points of damage reduction (5 against DR without a type).",
+    "prerequisites": [
+      { "type": "Feat", "name": "Penetrating Strike" },
+      { "type": "Feat", "name": "Weapon Focus" },
+      { "type": "ClassLevel", "name": "Fighter", "value": 16 }
+    ]
+  },
+  {
+    "id": "core.improved-critical", "name": "Improved Critical", "types": ["Combat"],
+    "subject": "Weapon",
+    "description": "Double the threat range of a chosen weapon.",
+    "prerequisites": [ { "type": "BaseAttackBonus", "value": 8 } ]
+  },
+  {
+    "id": "core.exotic-weapon-proficiency", "name": "Exotic Weapon Proficiency", "types": ["Combat"],
+    "subject": "Weapon",
+    "description": "Choose an exotic weapon. Attack with it without the non-proficiency penalty.",
+    "prerequisites": [ { "type": "BaseAttackBonus", "value": 1 } ]
+  },
+  {
+    "id": "core.martial-weapon-proficiency", "name": "Martial Weapon Proficiency", "types": ["Combat"],
+    "subject": "Weapon",
+    "description": "Choose a martial weapon. Attack with it without the non-proficiency penalty."
+  },
+  {
+    "id": "core.simple-weapon-proficiency", "name": "Simple Weapon Proficiency", "types": ["Combat"],
+    "description": "Attack with simple weapons without penalty. Every class has this already except druids, monks, and wizards."
+  },
+  {
+    "id": "core.weapon-finesse", "name": "Weapon Finesse", "types": ["Combat"],
+    "description": "Use your Dex modifier instead of Str on attack rolls with light weapons, elven curve blades, rapiers, whips, and spiked chains."
+  },
+  {
+    "id": "core.dazzling-display", "name": "Dazzling Display", "types": ["Combat"],
+    "description": "As a full-round action with your Weapon Focus weapon, make an Intimidate check to demoralize all foes within 30 feet.",
+    "prerequisites": [ { "type": "Feat", "name": "Weapon Focus" } ]
+  },
+  {
+    "id": "core.shatter-defenses", "name": "Shatter Defenses", "types": ["Combat"],
+    "description": "Shaken, frightened, or panicked foes you hit are flat-footed to your attacks until the end of your next turn.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Weapon Focus" },
+      { "type": "Feat", "name": "Dazzling Display" },
+      { "type": "BaseAttackBonus", "value": 6 }
+    ]
+  },
+  {
+    "id": "core.deadly-stroke", "name": "Deadly Stroke", "types": ["Combat"],
+    "description": "As a standard action, strike a stunned or flat-footed foe for double damage and 1 point of Constitution bleed.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Weapon Focus" },
+      { "type": "Feat", "name": "Greater Weapon Focus" },
+      { "type": "Feat", "name": "Dazzling Display" },
+      { "type": "Feat", "name": "Shatter Defenses" },
+      { "type": "BaseAttackBonus", "value": 11 }
+    ]
+  },
+
+  {
+    "id": "core.agile-maneuvers", "name": "Agile Maneuvers", "types": ["Combat"],
+    "description": "Use your Dex bonus instead of your Str bonus when calculating your Combat Maneuver Bonus."
+  },
+  {
+    "id": "core.defensive-combat-training", "name": "Defensive Combat Training", "types": ["Combat"],
+    "description": "Treat your total Hit Dice as your base attack bonus when calculating Combat Maneuver Defense."
+  },
+  {
+    "id": "core.improved-disarm", "name": "Improved Disarm", "types": ["Combat"],
+    "description": "No attack of opportunity when you disarm. +2 on disarm checks and +2 CMD against being disarmed.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Intelligence", "value": 13 },
+      { "type": "Feat", "name": "Combat Expertise" }
+    ]
+  },
+  {
+    "id": "core.greater-disarm", "name": "Greater Disarm", "types": ["Combat"],
+    "description": "Another +2 on disarm checks. Weapons you knock away land 15 feet from their wielder.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Combat Expertise" },
+      { "type": "Feat", "name": "Improved Disarm" },
+      { "type": "BaseAttackBonus", "value": 6 },
+      { "type": "AbilityScore", "ability": "Intelligence", "value": 13 }
+    ]
+  },
+  {
+    "id": "core.improved-feint", "name": "Improved Feint", "types": ["Combat"],
+    "description": "Feint in combat as a move action.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Intelligence", "value": 13 },
+      { "type": "Feat", "name": "Combat Expertise" }
+    ]
+  },
+  {
+    "id": "core.greater-feint", "name": "Greater Feint", "types": ["Combat"],
+    "description": "Foes you feint lose their Dex bonus to AC until the start of your next turn.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Combat Expertise" },
+      { "type": "Feat", "name": "Improved Feint" },
+      { "type": "BaseAttackBonus", "value": 6 },
+      { "type": "AbilityScore", "ability": "Intelligence", "value": 13 }
+    ]
+  },
+  {
+    "id": "core.improved-trip", "name": "Improved Trip", "types": ["Combat"],
+    "description": "No attack of opportunity when you trip. +2 on trip checks and +2 CMD against being tripped.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Intelligence", "value": 13 },
+      { "type": "Feat", "name": "Combat Expertise" }
+    ]
+  },
+  {
+    "id": "core.greater-trip", "name": "Greater Trip", "types": ["Combat"],
+    "description": "Another +2 on trip checks. Foes you trip provoke attacks of opportunity.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Combat Expertise" },
+      { "type": "Feat", "name": "Improved Trip" },
+      { "type": "BaseAttackBonus", "value": 6 },
+      { "type": "AbilityScore", "ability": "Intelligence", "value": 13 }
+    ]
+  },
+  {
+    "id": "core.improved-bull-rush", "name": "Improved Bull Rush", "types": ["Combat"],
+    "description": "No attack of opportunity when you bull rush. +2 on bull rush checks and +2 CMD against being bull rushed.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Strength", "value": 13 },
+      { "type": "Feat", "name": "Power Attack" },
+      { "type": "BaseAttackBonus", "value": 1 }
+    ]
+  },
+  {
+    "id": "core.greater-bull-rush", "name": "Greater Bull Rush", "types": ["Combat"],
+    "description": "Another +2 on bull rush checks. Foes you bull rush provoke attacks of opportunity from your allies.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Improved Bull Rush" },
+      { "type": "Feat", "name": "Power Attack" },
+      { "type": "BaseAttackBonus", "value": 6 },
+      { "type": "AbilityScore", "ability": "Strength", "value": 13 }
+    ]
+  },
+  {
+    "id": "core.improved-overrun", "name": "Improved Overrun", "types": ["Combat"],
+    "description": "No attack of opportunity when you overrun. +2 on overrun checks and +2 CMD against being overrun. Targets can't choose to avoid you.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Strength", "value": 13 },
+      { "type": "Feat", "name": "Power Attack" },
+      { "type": "BaseAttackBonus", "value": 1 }
+    ]
+  },
+  {
+    "id": "core.greater-overrun", "name": "Greater Overrun", "types": ["Combat"],
+    "description": "Another +2 on overrun checks. Foes you knock prone by overrunning provoke attacks of opportunity.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Improved Overrun" },
+      { "type": "Feat", "name": "Power Attack" },
+      { "type": "BaseAttackBonus", "value": 6 },
+      { "type": "AbilityScore", "ability": "Strength", "value": 13 }
+    ]
+  },
+  {
+    "id": "core.improved-sunder", "name": "Improved Sunder", "types": ["Combat"],
+    "description": "No attack of opportunity when you sunder. +2 on sunder checks and +2 CMD against having your gear sundered.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Strength", "value": 13 },
+      { "type": "Feat", "name": "Power Attack" },
+      { "type": "BaseAttackBonus", "value": 1 }
+    ]
+  },
+  {
+    "id": "core.greater-sunder", "name": "Greater Sunder", "types": ["Combat"],
+    "description": "Another +2 on sunder checks. Excess damage from destroying an item carries over to its wielder.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Improved Sunder" },
+      { "type": "Feat", "name": "Power Attack" },
+      { "type": "BaseAttackBonus", "value": 6 },
+      { "type": "AbilityScore", "ability": "Strength", "value": 13 }
+    ]
+  },
+  {
+    "id": "core.combat-reflexes", "name": "Combat Reflexes", "types": ["Combat"],
+    "description": "Make a number of additional attacks of opportunity per round equal to your Dex bonus, even while flat-footed."
+  },
+  {
+    "id": "core.stand-still", "name": "Stand Still", "types": ["Combat"],
+    "description": "Use a combat maneuver check as an attack of opportunity to stop a foe from moving for the rest of its turn.",
+    "prerequisites": [ { "type": "Feat", "name": "Combat Reflexes" } ]
+  },
+  {
+    "id": "core.mobility", "name": "Mobility", "types": ["Combat"],
+    "description": "+4 dodge bonus to AC against attacks of opportunity caused by your movement.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Dexterity", "value": 13 },
+      { "type": "Feat", "name": "Dodge" }
+    ]
+  },
+  {
+    "id": "core.spring-attack", "name": "Spring Attack", "types": ["Combat"],
+    "description": "As a full-round action, move, make one melee attack without provoking from its target, and keep moving.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Dexterity", "value": 13 },
+      { "type": "Feat", "name": "Dodge" },
+      { "type": "Feat", "name": "Mobility" },
+      { "type": "BaseAttackBonus", "value": 4 }
+    ]
+  },
+  {
+    "id": "core.whirlwind-attack", "name": "Whirlwind Attack", "types": ["Combat"],
+    "description": "As a full-attack action, make one melee attack against every foe within reach.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Dexterity", "value": 13 },
+      { "type": "AbilityScore", "ability": "Intelligence", "value": 13 },
+      { "type": "Feat", "name": "Combat Expertise" },
+      { "type": "Feat", "name": "Dodge" },
+      { "type": "Feat", "name": "Mobility" },
+      { "type": "Feat", "name": "Spring Attack" },
+      { "type": "BaseAttackBonus", "value": 4 }
+    ]
+  },
+  {
+    "id": "core.wind-stance", "name": "Wind Stance", "types": ["Combat"],
+    "description": "If you move more than 5 feet, gain 20% concealment against ranged attacks for 1 round.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Dexterity", "value": 15 },
+      { "type": "Feat", "name": "Dodge" },
+      { "type": "BaseAttackBonus", "value": 6 }
+    ]
+  },
+  {
+    "id": "core.lightning-stance", "name": "Lightning Stance", "types": ["Combat"],
+    "description": "If you take two move actions or a withdraw, gain 50% concealment for 1 round.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Dexterity", "value": 17 },
+      { "type": "Feat", "name": "Dodge" },
+      { "type": "Feat", "name": "Wind Stance" },
+      { "type": "BaseAttackBonus", "value": 11 }
+    ]
+  }
+]
