@@ -24,7 +24,7 @@ public class FeatTests
     {
         var feats = TestData.Feats();
 
-        Assert.Equal(109, feats.Count);
+        Assert.Equal(147, feats.Count);
         Assert.Equal(feats.Count, feats.Select(f => f.Id).Distinct().Count());
         Assert.Equal(feats.Count, feats.Select(f => f.Name).Distinct().Count());
 
@@ -48,7 +48,8 @@ public class FeatTests
         foreach (var feat in feats)
             foreach (var p in feat.Prerequisites ?? [])
                 if (p.Type == PrerequisiteType.Feat)
-                    Assert.Contains(p.Name!, names);
+                    foreach (var name in p.Name!.Split('|'))
+                        Assert.Contains(name, names);
     }
 
     // ---- Feat slots ----

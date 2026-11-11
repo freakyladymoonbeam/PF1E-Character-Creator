@@ -1,0 +1,277 @@
+[
+  {
+    "id": "core.improved-unarmed-strike", "name": "Improved Unarmed Strike", "types": ["Combat"],
+    "description": "You count as armed when unarmed, so you don't provoke attacks of opportunity, and you can deal lethal or nonlethal damage."
+  },
+  {
+    "id": "core.deflect-arrows", "name": "Deflect Arrows", "types": ["Combat"],
+    "description": "With a free hand, once per round avoid the damage from one ranged attack you are aware of.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Dexterity", "value": 13 },
+      { "type": "Feat", "name": "Improved Unarmed Strike" }
+    ]
+  },
+  {
+    "id": "core.snatch-arrows", "name": "Snatch Arrows", "types": ["Combat"],
+    "description": "When you deflect a ranged attack, you can catch the weapon instead. Thrown weapons can be thrown back.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Dexterity", "value": 15 },
+      { "type": "Feat", "name": "Deflect Arrows" },
+      { "type": "Feat", "name": "Improved Unarmed Strike" }
+    ]
+  },
+  {
+    "id": "core.improved-grapple", "name": "Improved Grapple", "types": ["Combat"],
+    "description": "No attack of opportunity when you grapple. +2 on grapple checks and +2 CMD against being grappled.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Dexterity", "value": 13 },
+      { "type": "Feat", "name": "Improved Unarmed Strike" }
+    ]
+  },
+  {
+    "id": "core.greater-grapple", "name": "Greater Grapple", "types": ["Combat"],
+    "description": "Another +2 on grapple checks. Maintaining a grapple is a move action.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Improved Grapple" },
+      { "type": "Feat", "name": "Improved Unarmed Strike" },
+      { "type": "BaseAttackBonus", "value": 6 },
+      { "type": "AbilityScore", "ability": "Dexterity", "value": 13 }
+    ]
+  },
+  {
+    "id": "core.scorpion-style", "name": "Scorpion Style", "types": ["Combat"],
+    "description": "An unarmed strike that reduces the target's speed to 5 feet unless it makes a Fortitude save.",
+    "prerequisites": [ { "type": "Feat", "name": "Improved Unarmed Strike" } ]
+  },
+  {
+    "id": "core.gorgons-fist", "name": "Gorgon's Fist", "types": ["Combat"],
+    "description": "An unarmed strike against a foe whose speed is reduced staggers it unless it makes a Fortitude save.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Improved Unarmed Strike" },
+      { "type": "Feat", "name": "Scorpion Style" },
+      { "type": "BaseAttackBonus", "value": 6 }
+    ]
+  },
+  {
+    "id": "core.medusas-wrath", "name": "Medusa's Wrath", "types": ["Combat"],
+    "description": "On a full attack including an unarmed strike, make two extra unarmed strikes against a dazed, flat-footed, paralyzed, staggered, stunned, or unconscious foe.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Improved Unarmed Strike" },
+      { "type": "Feat", "name": "Gorgon's Fist" },
+      { "type": "Feat", "name": "Scorpion Style" },
+      { "type": "BaseAttackBonus", "value": 11 }
+    ]
+  },
+  {
+    "id": "core.stunning-fist", "name": "Stunning Fist", "types": ["Combat"],
+    "description": "Declare before an unarmed attack. A foe you damage must make a Fortitude save or be stunned for 1 round. Usable a limited number of times per day.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Dexterity", "value": 13 },
+      { "type": "AbilityScore", "ability": "Wisdom", "value": 13 },
+      { "type": "Feat", "name": "Improved Unarmed Strike" },
+      { "type": "BaseAttackBonus", "value": 8 }
+    ]
+  },
+
+  {
+    "id": "core.two-weapon-fighting", "name": "Two-Weapon Fighting", "types": ["Combat"],
+    "description": "Reduce the penalties for fighting with two weapons (primary hand by 2, off hand by 6).",
+    "prerequisites": [ { "type": "AbilityScore", "ability": "Dexterity", "value": 15 } ]
+  },
+  {
+    "id": "core.double-slice", "name": "Double Slice", "types": ["Combat"],
+    "description": "Add your full Strength bonus to damage with your off-hand weapon.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Dexterity", "value": 15 },
+      { "type": "Feat", "name": "Two-Weapon Fighting" }
+    ]
+  },
+  {
+    "id": "core.improved-two-weapon-fighting", "name": "Improved Two-Weapon Fighting", "types": ["Combat"],
+    "description": "A second off-hand attack, at a -5 penalty.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Dexterity", "value": 17 },
+      { "type": "Feat", "name": "Two-Weapon Fighting" },
+      { "type": "BaseAttackBonus", "value": 6 }
+    ]
+  },
+  {
+    "id": "core.greater-two-weapon-fighting", "name": "Greater Two-Weapon Fighting", "types": ["Combat"],
+    "description": "A third off-hand attack, at a -10 penalty.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Dexterity", "value": 19 },
+      { "type": "Feat", "name": "Improved Two-Weapon Fighting" },
+      { "type": "Feat", "name": "Two-Weapon Fighting" },
+      { "type": "BaseAttackBonus", "value": 11 }
+    ]
+  },
+  {
+    "id": "core.two-weapon-rend", "name": "Two-Weapon Rend", "types": ["Combat"],
+    "description": "If you hit a foe with both weapons, deal an extra 1d10 plus 1-1/2 times your Strength modifier, once per round.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Dexterity", "value": 17 },
+      { "type": "Feat", "name": "Double Slice" },
+      { "type": "Feat", "name": "Improved Two-Weapon Fighting" },
+      { "type": "Feat", "name": "Two-Weapon Fighting" },
+      { "type": "BaseAttackBonus", "value": 11 }
+    ]
+  },
+  {
+    "id": "core.two-weapon-defense", "name": "Two-Weapon Defense", "types": ["Combat"],
+    "description": "+1 shield bonus to AC while wielding two weapons (+2 when fighting defensively or using total defense).",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Dexterity", "value": 15 },
+      { "type": "Feat", "name": "Two-Weapon Fighting" }
+    ]
+  },
+
+  {
+    "id": "core.shield-proficiency", "name": "Shield Proficiency", "types": ["Combat"],
+    "description": "A shield's armor check penalty applies only to Strength- and Dexterity-based skills. Most martial classes have this already."
+  },
+  {
+    "id": "core.improved-shield-bash", "name": "Improved Shield Bash", "types": ["Combat"],
+    "description": "Keep your shield's AC bonus when you shield bash.",
+    "prerequisites": [ { "type": "Feat", "name": "Shield Proficiency" } ]
+  },
+  {
+    "id": "core.shield-slam", "name": "Shield Slam", "types": ["Combat"],
+    "description": "Foes hit by your shield bash are also hit with a free bull rush.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Improved Shield Bash" },
+      { "type": "Feat", "name": "Shield Proficiency" },
+      { "type": "Feat", "name": "Two-Weapon Fighting" },
+      { "type": "BaseAttackBonus", "value": 6 }
+    ]
+  },
+  {
+    "id": "core.shield-master", "name": "Shield Master", "types": ["Combat"],
+    "description": "No two-weapon penalties when attacking with a shield, and its enhancement bonus applies to attack and damage.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Improved Shield Bash" },
+      { "type": "Feat", "name": "Shield Proficiency" },
+      { "type": "Feat", "name": "Shield Slam" },
+      { "type": "Feat", "name": "Two-Weapon Fighting" },
+      { "type": "BaseAttackBonus", "value": 11 }
+    ]
+  },
+  {
+    "id": "core.shield-focus", "name": "Shield Focus", "types": ["Combat"],
+    "description": "Increase the AC bonus from any shield you use by 1.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Shield Proficiency" },
+      { "type": "BaseAttackBonus", "value": 1 }
+    ]
+  },
+  {
+    "id": "core.greater-shield-focus", "name": "Greater Shield Focus", "types": ["Combat"],
+    "description": "Another +1 to the AC bonus from any shield you use.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Shield Focus" },
+      { "type": "Feat", "name": "Shield Proficiency" },
+      { "type": "ClassLevel", "name": "Fighter", "value": 8 }
+    ]
+  },
+  {
+    "id": "core.tower-shield-proficiency", "name": "Tower Shield Proficiency", "types": ["Combat"],
+    "description": "A tower shield's armor check penalty applies only to Strength- and Dexterity-based skills.",
+    "prerequisites": [ { "type": "Feat", "name": "Shield Proficiency" } ]
+  },
+
+  {
+    "id": "core.armor-proficiency-light", "name": "Armor Proficiency, Light", "types": ["Combat"],
+    "description": "No attack penalty in light armor, and its armor check penalty applies only to Strength- and Dexterity-based skills. Everyone but monks, sorcerers, and wizards has this already."
+  },
+  {
+    "id": "core.armor-proficiency-medium", "name": "Armor Proficiency, Medium", "types": ["Combat"],
+    "description": "The same benefit as Light, for medium armor.",
+    "prerequisites": [ { "type": "Feat", "name": "Armor Proficiency, Light" } ]
+  },
+  {
+    "id": "core.armor-proficiency-heavy", "name": "Armor Proficiency, Heavy", "types": ["Combat"],
+    "description": "The same benefit as Light, for heavy armor.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Armor Proficiency, Light" },
+      { "type": "Feat", "name": "Armor Proficiency, Medium" }
+    ]
+  },
+  {
+    "id": "core.arcane-armor-training", "name": "Arcane Armor Training", "types": ["Combat"],
+    "description": "As a swift action, reduce your arcane spell failure chance from armor by 10% for spells cast this round.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Armor Proficiency, Light" },
+      { "type": "CasterLevel", "value": 3 }
+    ]
+  },
+  {
+    "id": "core.arcane-armor-mastery", "name": "Arcane Armor Mastery", "types": ["Combat"],
+    "description": "As a swift action, reduce your arcane spell failure chance from armor by 20% for spells cast this round. Replaces, and does not stack with, Arcane Armor Training.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Arcane Armor Training" },
+      { "type": "Feat", "name": "Armor Proficiency, Medium" },
+      { "type": "CasterLevel", "value": 7 }
+    ]
+  },
+
+  {
+    "id": "core.vital-strike", "name": "Vital Strike", "types": ["Combat"],
+    "description": "With the attack action, make one attack at your highest bonus that rolls the weapon's damage dice twice.",
+    "prerequisites": [ { "type": "BaseAttackBonus", "value": 6 } ]
+  },
+  {
+    "id": "core.improved-vital-strike", "name": "Improved Vital Strike", "types": ["Combat"],
+    "description": "As Vital Strike, but the weapon's damage dice are rolled three times.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Vital Strike" },
+      { "type": "BaseAttackBonus", "value": 11 }
+    ]
+  },
+  {
+    "id": "core.greater-vital-strike", "name": "Greater Vital Strike", "types": ["Combat"],
+    "description": "As Vital Strike, but the weapon's damage dice are rolled four times.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Improved Vital Strike" },
+      { "type": "Feat", "name": "Vital Strike" },
+      { "type": "BaseAttackBonus", "value": 16 }
+    ]
+  },
+  {
+    "id": "core.lunge", "name": "Lunge", "types": ["Combat"],
+    "description": "Increase your melee reach by 5 feet until the end of your turn, at a -2 penalty to AC until your next turn.",
+    "prerequisites": [ { "type": "BaseAttackBonus", "value": 6 } ]
+  },
+  {
+    "id": "core.step-up", "name": "Step Up", "types": ["Combat"],
+    "description": "When an adjacent foe takes a 5-foot step away, take a 5-foot step as an immediate action to stay adjacent.",
+    "prerequisites": [ { "type": "BaseAttackBonus", "value": 1 } ]
+  },
+  {
+    "id": "core.strike-back", "name": "Strike Back", "types": ["Combat"],
+    "description": "Ready an action to make a melee attack against a foe that attacks you from outside your reach.",
+    "prerequisites": [ { "type": "BaseAttackBonus", "value": 11 } ]
+  },
+  {
+    "id": "core.blind-fight", "name": "Blind-Fight", "types": ["Combat"],
+    "description": "Reroll melee miss chances from concealment once, and invisible attackers get no special advantage against you in melee."
+  },
+  {
+    "id": "core.catch-off-guard", "name": "Catch Off-Guard", "types": ["Combat"],
+    "description": "No penalty for improvised melee weapons, and unarmed opponents are flat-footed against them."
+  },
+  {
+    "id": "core.throw-anything", "name": "Throw Anything", "types": ["Combat"],
+    "description": "No penalty for improvised ranged weapons, and a +1 circumstance bonus on attacks with thrown splash weapons."
+  },
+  {
+    "id": "core.improvised-weapon-mastery", "name": "Improvised Weapon Mastery", "types": ["Combat"],
+    "description": "No penalties with improvised weapons, damage one step higher, and a 19-20/x2 critical range.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Catch Off-Guard|Throw Anything" },
+      { "type": "BaseAttackBonus", "value": 8 }
+    ]
+  },
+  {
+    "id": "core.intimidating-prowess", "name": "Intimidating Prowess", "types": ["Combat"],
+    "description": "Add your Strength modifier to Intimidate checks, in addition to Charisma."
+  }
+]
