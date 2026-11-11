@@ -16,28 +16,6 @@
     ]
   },
   {
-    "id": "core.bleeding-critical", "name": "Bleeding Critical", "types": ["Combat", "Critical"],
-    "description": "Critical hits with slashing or piercing weapons cause bleeding.",
-    "prerequisites": [
-      { "type": "Feat", "name": "Critical Focus" },
-      { "type": "BaseAttackBonus", "value": 11 }
-    ]
-  },
-  {
-    "id": "core.brew-potion", "name": "Brew Potion", "types": ["ItemCreation"],
-    "description": "Create magic potions.",
-    "prerequisites": [ { "type": "CasterLevel", "value": 3 } ]
-  },
-  {
-    "id": "core.cleave", "name": "Cleave", "types": ["Combat"],
-    "description": "After hitting a foe, make one extra attack against an adjacent foe, at the cost of AC.",
-    "prerequisites": [
-      { "type": "AbilityScore", "ability": "Strength", "value": 13 },
-      { "type": "Feat", "name": "Power Attack" },
-      { "type": "BaseAttackBonus", "value": 1 }
-    ]
-  },
-  {
     "id": "core.combat-expertise", "name": "Combat Expertise", "types": ["Combat"],
     "description": "Trade melee accuracy for a dodge bonus to AC.",
     "prerequisites": [ { "type": "AbilityScore", "ability": "Intelligence", "value": 13 } ]
@@ -46,6 +24,14 @@
     "id": "core.critical-focus", "name": "Critical Focus", "types": ["Combat"],
     "description": "Bonus on rolls to confirm critical hits.",
     "prerequisites": [ { "type": "BaseAttackBonus", "value": 9 } ]
+  },
+  {
+    "id": "core.bleeding-critical", "name": "Bleeding Critical", "types": ["Combat", "Critical"],
+    "description": "Critical hits with slashing or piercing weapons cause bleeding.",
+    "prerequisites": [
+      { "type": "Feat", "name": "Critical Focus" },
+      { "type": "BaseAttackBonus", "value": 11 }
+    ]
   },
   {
     "id": "core.disruptive", "name": "Disruptive", "types": ["Combat"],
@@ -59,22 +45,8 @@
     "modifiers": [ { "stat": "AC", "value": 1, "type": "Dodge" } ]
   },
   {
-    "id": "core.empower-spell", "name": "Empower Spell", "types": ["Metamagic"],
-    "description": "Increase a spell's variable numeric effects by half, using a slot two levels higher."
-  },
-  {
     "id": "core.eschew-materials", "name": "Eschew Materials", "types": ["General"],
     "description": "Cast spells with cheap material components without needing them."
-  },
-  {
-    "id": "core.great-cleave", "name": "Great Cleave", "types": ["Combat"],
-    "description": "Like Cleave, but you can keep chaining attacks to adjacent foes.",
-    "prerequisites": [
-      { "type": "AbilityScore", "ability": "Strength", "value": 13 },
-      { "type": "Feat", "name": "Cleave" },
-      { "type": "Feat", "name": "Power Attack" },
-      { "type": "BaseAttackBonus", "value": 4 }
-    ]
   },
   {
     "id": "core.great-fortitude", "name": "Great Fortitude", "types": ["General"],
@@ -125,14 +97,6 @@
     "prerequisites": [ { "type": "SkillRanks", "name": "Ride", "value": 1 } ]
   },
   {
-    "id": "core.power-attack", "name": "Power Attack", "types": ["Combat"],
-    "description": "Trade melee accuracy for damage. The trade grows as your base attack bonus rises.",
-    "prerequisites": [
-      { "type": "AbilityScore", "ability": "Strength", "value": 13 },
-      { "type": "BaseAttackBonus", "value": 1 }
-    ]
-  },
-  {
     "id": "core.persuasive", "name": "Persuasive", "types": ["General"],
     "description": "Bonus on Diplomacy and Intimidate checks, larger at 10 ranks in the skill.",
     "modifiers": [
@@ -141,9 +105,31 @@
     ]
   },
   {
-    "id": "core.scribe-scroll", "name": "Scribe Scroll", "types": ["ItemCreation"],
-    "description": "Create magic scrolls.",
-    "prerequisites": [ { "type": "CasterLevel", "value": 1 } ]
+    "id": "core.power-attack", "name": "Power Attack", "types": ["Combat"],
+    "description": "Trade melee accuracy for damage. The trade grows as your base attack bonus rises.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Strength", "value": 13 },
+      { "type": "BaseAttackBonus", "value": 1 }
+    ]
+  },
+  {
+    "id": "core.cleave", "name": "Cleave", "types": ["Combat"],
+    "description": "After hitting a foe, make one extra attack against an adjacent foe, at the cost of AC.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Strength", "value": 13 },
+      { "type": "Feat", "name": "Power Attack" },
+      { "type": "BaseAttackBonus", "value": 1 }
+    ]
+  },
+  {
+    "id": "core.great-cleave", "name": "Great Cleave", "types": ["Combat"],
+    "description": "Like Cleave, but you can keep chaining attacks to adjacent foes.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Strength", "value": 13 },
+      { "type": "Feat", "name": "Cleave" },
+      { "type": "Feat", "name": "Power Attack" },
+      { "type": "BaseAttackBonus", "value": 4 }
+    ]
   },
   {
     "id": "core.skill-focus", "name": "Skill Focus", "types": ["General"],
@@ -183,5 +169,19 @@
     "subject": "Weapon",
     "description": "Choose a weapon. Bonus on attack rolls with it. (Weapon proficiency isn't checked yet.)",
     "prerequisites": [ { "type": "BaseAttackBonus", "value": 1 } ]
+  },
+  {
+    "id": "core.brew-potion", "name": "Brew Potion", "types": ["ItemCreation"],
+    "description": "Create magic potions.",
+    "prerequisites": [ { "type": "CasterLevel", "value": 3 } ]
+  },
+  {
+    "id": "core.scribe-scroll", "name": "Scribe Scroll", "types": ["ItemCreation"],
+    "description": "Create magic scrolls.",
+    "prerequisites": [ { "type": "CasterLevel", "value": 1 } ]
+  },
+  {
+    "id": "core.empower-spell", "name": "Empower Spell", "types": ["Metamagic"],
+    "description": "Increase a spell's variable numeric effects by half, using a slot two levels higher."
   }
 ]
