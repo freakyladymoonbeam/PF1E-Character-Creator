@@ -1,0 +1,51 @@
+{
+    "id": "core.dwarf",
+    "name": "Dwarf",
+    "size": "Medium",
+    "baseSpeed": 20,
+    "abilityModifiers": {
+        "Constitution": 2,
+        "Wisdom": 2,
+        "Charisma": -2
+    },
+    "traits": [
+        {
+            "name": "Slow and Steady",
+            "description": "Dwarves have a base speed of 20 feet, but their speed is never modified by armor or encumbrance."
+        },
+        {
+            "name": "Darkvision",
+            "description": "Dwarves can see in the dark up to 60 feet."
+        },
+        {
+            "name": "Defensive Training",
+            "description": "Dwarves get a +4 dodge bonus to their AC against monsters of the giant subtype."
+        },
+        {
+            "name": "Greed",
+            "description": "Dwarves receive a +2 racial bonus on Appraise checks made to determine the price of nonmagical goods that contain precious metals or gemstones."
+        },
+        {
+            "name": "Hatred",
+            "description": "Dwarves receive a +1 bonus on attack rolls against humanoid creatures of the orc and goblinoid subtypes because of their special training against these hated foes."
+        },
+        {
+            "name": "Hardy",
+            "description": "Dwarves receive a +2 racial bonus on saving throws against poison, spells, and spell-like abilities."
+        },
+        {
+            "name": "Stability",
+            "description": "Dwarves receive a +4 racial bonus to their Combat Maneuver Defense when resisting a bull rush or trip attempt while standing on the ground."
+        },
+        {
+            "name": "Stonecunning",
+            "description": "Dwarves receive a +2 bonus on Perception checks to potentially notice unusual stonework, such as traps and hidden doors located in stone walls or floors. They receive a check to notice any such features that they pass within 10 feet of, whether or not they are actively looking."
+        },
+        {
+            "name": "Weapon Familiarity",
+            "description": "Dwarves are proficient with battleaxes, heavy picks, and warhammers, and treat any weapon with the word “dwarven” in its name as a martial weapon."
+        }
+    ],
+    "languages": ["Common", "Dwarven"],
+    "bonusLanguages": ["Giant", "Gnome", "Goblin", "Orc", "Terran", "Undercommon"]
+}
