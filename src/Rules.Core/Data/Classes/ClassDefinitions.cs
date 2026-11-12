@@ -10,6 +10,14 @@ public enum SaveProgression { Good, Poor }
 // Defines a class feature, including the level at which it is gained, its name, and description.
 public record ClassFeatureDefinition(int Level, string Name, string Description);
 
+// Which feats a class's "Bonus Feat" features can be spent on: any feat with one of the listed types, plus any feats named explicitly.
+public record BonusFeatRule(List<FeatType>? Types = null, List<string>? Names = null)
+{
+    public bool Allows(FeatDefinition feat) =>
+        (Types?.Any(t => feat.Types.Contains(t)) ?? false)
+        || (Names?.Contains(feat.Name) ?? false);
+}
+
 // Defines a character class, including its hit die, skill ranks, base attack bonus progression, saving throw progressions, class skills, proficiencies, and features.
 public record ClassDefinition(
     string Id,
@@ -27,7 +35,8 @@ public record ClassDefinition(
     StartingWealth StartingWealth,
     List<ClassFeatureDefinition> Features,
     SpellcastingDefinition? Spellcasting = null,
-    List<string>? GrantedFeats = null)   // feats the class gives automatically (e.g. armor proficiencies)
+    List<string>? GrantedFeats = null,    // feats the class gives automatically (e.g. armor proficiencies)
+    BonusFeatRule? BonusFeats = null)     // which feats the class's "Bonus Feat" features can be spent on
 {
     // Checks if the class allows a specific alignment.
     public bool AllowsAlignment(Alignment alignment) =>
@@ -40,6 +49,10 @@ public record ClassDefinition(
     public bool IsClassSkill(string skillName) =>
         ClassSkills.Contains(skillName)
         || (skillName.StartsWith("Knowledge (") && ClassSkills.Contains("Knowledge (all)"));
+
+    // Bonus feats earned by a given level: one per "Bonus Feat" class feature.
+    public int BonusFeatSlotsAt(int level) =>
+        BonusFeats is null ? 0 : Features.Count(f => f.Name == "Bonus Feat" && f.Level <= level);
 
     // Calculates the base attack bonus for a given level based on the class's progression.
     public int BaseAttackBonusAt(int level) => level <= 0 ? 0 : BabProgression switch

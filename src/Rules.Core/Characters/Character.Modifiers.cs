@@ -28,7 +28,7 @@ public partial class Character
 
     private IEnumerable<Modifier> FeatModifiers()
     {
-        foreach (var choice in Feats)
+        foreach (var choice in AllFeats)
             foreach (var m in choice.Feat.Modifiers ?? [])
                 yield return ResolveModifier(m, $"Feat: {choice.Feat.Name}", choice.Subject);
     }

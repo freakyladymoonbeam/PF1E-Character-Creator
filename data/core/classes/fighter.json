@@ -26,6 +26,7 @@
     "Shield Proficiency",
     "Tower Shield Proficiency"
   ],
+  "bonusFeats": { "types": ["Combat"] },
   "startingWealth": { "dice": 5, "sides": 6, "multiplier": 10 },
   "features": [
     { "level": 1, "name": "Bonus Feat", "description": "Gain a bonus combat feat. Fighters get another at every even level." },

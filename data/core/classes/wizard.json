@@ -18,6 +18,8 @@
   ],
   "weaponProficiencies": ["Club", "Dagger", "Heavy crossbow", "Light crossbow", "Quarterstaff"],
   "armorProficiencies": [],
+  "grantedFeats": ["Scribe Scroll", "Eschew Materials"],
+  "bonusFeats": { "types": ["Metamagic", "ItemCreation"], "names": ["Spell Mastery"] },
   "startingWealth": { "dice": 2, "sides": 6, "multiplier": 10 },
   "spellcasting": {
     "castingAbility": "Intelligence",

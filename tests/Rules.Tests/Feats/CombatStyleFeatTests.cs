@@ -63,14 +63,12 @@ public class CombatStyleFeatTests
 
     // ---- Feats a class grants automatically ----
 
-    // Verifies that the Fighter class grants armor and shield proficiencies automatically, while the Wizard grants none.
+    // Verifies that the Fighter grants armor and shield proficiencies and the Wizard grants its two level 1 feats.
     [Fact]
-    public void Fighter_GrantsArmorAndShieldProficiencies_Wizard_GrantsNone()
+    public void Fighter_GrantsArmorAndShieldProficiencies_Wizard_GrantsItsTwoFeats()
     {
-        var granted = TestData.Fighter().GrantedFeats!;
-
-        Assert.Equal(5, granted.Count);
-        Assert.Null(TestData.Wizard().GrantedFeats);
+        Assert.Equal(5, TestData.Fighter().GrantedFeats!.Count);
+        Assert.Equal(new[] { "Scribe Scroll", "Eschew Materials" }, TestData.Wizard().GrantedFeats);
     }
 
     // Verifies that all feats granted by a class are real feats.
@@ -365,7 +363,7 @@ public class CombatStyleFeatTests
     {
         var fighter = Build(TestData.Fighter(), 1);
 
-        Assert.Empty(fighter.FeatProblems(TestData.Feat("Armor Proficiency, Heavy")));
+        Assert.Empty(fighter.UnmetPrerequisites(TestData.Feat("Armor Proficiency, Heavy")));
     }
 
     // Verifies that the Arcane Armor Training feat requires light armor proficiency and a caster level of 3.

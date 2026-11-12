@@ -67,5 +67,5 @@ public record FeatDefinition(
     List<ModifierDefinition>? Modifiers = null,
     bool Repeatable = false);   // can be taken more than once, with effects that stack
 
-// A feat as taken by a character, with its choice (if any).
-public record FeatChoice(FeatDefinition Feat, string? Subject = null);
+// A feat as taken by a character, with its choice (if any) and, for bonus feats, the class that gave the slot.
+public record FeatChoice(FeatDefinition Feat, string? Subject = null, string? Source = null);

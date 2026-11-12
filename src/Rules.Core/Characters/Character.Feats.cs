@@ -2,16 +2,31 @@ using Rules.Core.Data;
 
 namespace Rules.Core;
 
-// Feat slots, prerequisites, and taking feats.
+// Feat slots, bonus feats, prerequisites, and taking feats.
 public partial class Character
 {
+    // Feats taken in ordinary feat slots.
     public List<FeatChoice> Feats { get; } = [];
 
+    // Feats taken in class bonus feat slots (each one's Source is the class that gave the slot).
+    public List<FeatChoice> BonusFeats { get; } = [];
+
+    // Every feat the character has taken, from either kind of slot.
+    public IEnumerable<FeatChoice> AllFeats => Feats.Concat(BonusFeats);
+
     // One feat at level 1, then one at every odd level.
-    // (Class bonus feats and the Human bonus feat will be tracked separately.)
+    // (Class bonus feats are tracked separately; the Human bonus feat will come with races.)
     public int FeatSlotsAvailable => (TotalLevel + 1) / 2;
 
     public int FeatSlotsRemaining => FeatSlotsAvailable - Feats.Count;
+
+    // Bonus feats a class has earned by its level, and how many are still unspent.
+    public int BonusFeatSlotsAvailable(ClassLevel classLevel) =>
+        classLevel.Class.BonusFeatSlotsAt(classLevel.Level);
+
+    public int BonusFeatSlotsRemaining(ClassLevel classLevel) =>
+        BonusFeatSlotsAvailable(classLevel)
+        - BonusFeats.Count(f => f.Source == classLevel.Class.Name);
 
     public bool MeetsPrerequisite(PrerequisiteDefinition p, string? chosenSubject = null)
     {
@@ -36,10 +51,10 @@ public partial class Character
                 && casting.CanCastAt(c.Level)),
             // "Critical" counts how many different feats of that type the character has.
             PrerequisiteType.FeatsOfType =>
-                Feats.Where(f => f.Feat.Types.Contains(Enum.Parse<FeatType>(p.Name!)))
-                     .Select(f => f.Feat.Id)
-                     .Distinct()
-                     .Count() >= value,
+                AllFeats.Where(f => f.Feat.Types.Contains(Enum.Parse<FeatType>(p.Name!)))
+                        .Select(f => f.Feat.Id)
+                        .Distinct()
+                        .Count() >= value,
             _ => throw new InvalidOperationException($"Unknown prerequisite type {p.Type}.")
         };
     }
@@ -58,7 +73,7 @@ public partial class Character
         if (p.Subject is null && GrantedFeatNames.Any(g => names.Contains(g)))
             return true;
 
-        return Feats.Any(f => names.Contains(f.Feat.Name)
+        return AllFeats.Any(f => names.Contains(f.Feat.Name)
             && SubjectMatches(p.Subject, f.Subject, chosenSubject));
     }
 
@@ -74,8 +89,8 @@ public partial class Character
         FeatDefinition feat, string? subject = null) =>
         (feat.Prerequisites ?? []).Where(p => !MeetsPrerequisite(p, subject));
 
-    // Everything stopping this character from taking the feat. Empty means it's allowed.
-    public List<string> FeatProblems(FeatDefinition feat, string? subject = null)
+    // Checks shared by both kinds of slot: the choice, duplicates, and prerequisites.
+    private List<string> EligibilityProblems(FeatDefinition feat, string? subject)
     {
         var problems = new List<string>();
 
@@ -85,19 +100,31 @@ public partial class Character
         if (feat.Subject == FeatSubject.None && subject is not null)
             problems.Add($"{feat.Name} does not take a choice.");
 
-        bool alreadyTaken = Feats.Any(f => f.Feat.Id == feat.Id
+        // A feat a class already grants can't be taken again, nor can one already taken.
+        bool grantedByClass = feat.Subject == FeatSubject.None
+            && GrantedFeatNames.Contains(feat.Name);
+        bool alreadyTaken = AllFeats.Any(f => f.Feat.Id == feat.Id
             && string.Equals(f.Subject, subject, StringComparison.OrdinalIgnoreCase));
-        bool duplicateAllowed = feat.Repeatable && feat.Subject == FeatSubject.None;
+        bool repeatable = feat.Repeatable && feat.Subject == FeatSubject.None;
 
-        if (alreadyTaken && !duplicateAllowed)
+        if (!repeatable && (grantedByClass || alreadyTaken))
             problems.Add($"Already has {feat.Name}.");
-
-        if (FeatSlotsRemaining <= 0)
-            problems.Add("No feat slots remaining.");
 
         problems.AddRange(
             UnmetPrerequisites(feat, subject).Select(p => $"Requires {p.Describe(subject)}."));
 
+        return problems;
+    }
+
+    // Everything stopping this character from taking the feat in an ordinary slot. Empty means it's allowed.
+    public List<string> FeatProblems(FeatDefinition feat, string? subject = null)
+    {
+        var problems = new List<string>();
+
+        if (FeatSlotsRemaining <= 0)
+            problems.Add("No feat slots remaining.");
+
+        problems.AddRange(EligibilityProblems(feat, subject));
         return problems;
     }
 
@@ -109,5 +136,43 @@ public partial class Character
                 $"Cannot take {feat.Name}: {string.Join(" ", problems)}");
 
         Feats.Add(new FeatChoice(feat, subject));
+    }
+
+    // Everything stopping this character from taking the feat in one of a class's bonus slots.
+    public List<string> BonusFeatProblems(
+        ClassLevel classLevel, FeatDefinition feat, string? subject = null)
+    {
+        var problems = new List<string>();
+
+        if (!Classes.Contains(classLevel))
+            problems.Add("That class level doesn't belong to this character.");
+
+        var rule = classLevel.Class.BonusFeats;
+        if (rule is null)
+        {
+            problems.Add($"{classLevel.Class.Name} has no bonus feats.");
+        }
+        else
+        {
+            if (BonusFeatSlotsRemaining(classLevel) <= 0)
+                problems.Add($"No {classLevel.Class.Name} bonus feats remaining.");
+
+            if (!rule.Allows(feat))
+                problems.Add(
+                    $"{feat.Name} is not one of the feats a {classLevel.Class.Name} can take as a bonus feat.");
+        }
+
+        problems.AddRange(EligibilityProblems(feat, subject));
+        return problems;
+    }
+
+    public void AddBonusFeat(ClassLevel classLevel, FeatDefinition feat, string? subject = null)
+    {
+        var problems = BonusFeatProblems(classLevel, feat, subject);
+        if (problems.Count > 0)
+            throw new InvalidOperationException(
+                $"Cannot take {feat.Name} as a bonus feat: {string.Join(" ", problems)}");
+
+        BonusFeats.Add(new FeatChoice(feat, subject, classLevel.Class.Name));
     }
 }

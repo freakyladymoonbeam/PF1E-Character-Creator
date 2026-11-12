@@ -274,7 +274,7 @@ public class FeatTests
     {
         var scribeScroll = TestData.Feat("Scribe Scroll");
 
-        Assert.Empty(Build(TestData.Wizard(), 1).FeatProblems(scribeScroll));
+        Assert.Empty(Build(TestData.Wizard(), 1).UnmetPrerequisites(scribeScroll));
         Assert.Contains(Build(TestData.Fighter(), 1).FeatProblems(scribeScroll),
             p => p.Contains("caster level 1"));
     }
