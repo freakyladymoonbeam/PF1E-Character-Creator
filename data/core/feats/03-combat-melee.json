@@ -6,7 +6,8 @@
     "prerequisites": [
       { "type": "Feat", "name": "Weapon Focus", "subject": "{subject}" },
       { "type": "ClassLevel", "name": "Fighter", "value": 8 }
-    ]
+    ],
+    "modifiers": [ { "stat": "Attack", "value": 1, "type": "Untyped", "condition": "weapon:{subject}" } ]
   },
   {
     "id": "core.weapon-specialization", "name": "Weapon Specialization", "types": ["Combat"],
@@ -15,7 +16,8 @@
     "prerequisites": [
       { "type": "Feat", "name": "Weapon Focus", "subject": "{subject}" },
       { "type": "ClassLevel", "name": "Fighter", "value": 4 }
-    ]
+    ],
+    "modifiers": [ { "stat": "Damage", "value": 2, "type": "Untyped", "condition": "weapon:{subject}" } ]
   },
   {
     "id": "core.greater-weapon-specialization", "name": "Greater Weapon Specialization", "types": ["Combat"],
@@ -26,7 +28,8 @@
       { "type": "Feat", "name": "Greater Weapon Focus", "subject": "{subject}" },
       { "type": "Feat", "name": "Weapon Specialization", "subject": "{subject}" },
       { "type": "ClassLevel", "name": "Fighter", "value": 12 }
-    ]
+    ],
+    "modifiers": [ { "stat": "Damage", "value": 2, "type": "Untyped", "condition": "weapon:{subject}" } ]
   },
   {
     "id": "core.penetrating-strike", "name": "Penetrating Strike", "types": ["Combat"],
@@ -230,6 +233,9 @@
     "prerequisites": [
       { "type": "AbilityScore", "ability": "Dexterity", "value": 13 },
       { "type": "Feat", "name": "Dodge" }
+    ],
+    "modifiers": [
+      { "stat": "AC", "value": 4, "type": "Dodge", "condition": "vs:attacks-of-opportunity-from-movement" }
     ]
   },
   {

@@ -3,22 +3,22 @@ namespace Rules.Core;
 // Saves, attacks, armor class, initiative, and hit points.
 public partial class Character
 {
-    // Saves
+    // Saves ("Saves" bonuses apply to all three)
     public int FortitudeSave =>
-        BaseFortitude + AbilityModifier(Ability.Constitution) + Total("Fortitude");
+        BaseFortitude + AbilityModifier(Ability.Constitution) + TotalFor("Fortitude", "Saves");
 
     public int ReflexSave =>
-        BaseReflex + AbilityModifier(Ability.Dexterity) + Total("Reflex");
+        BaseReflex + AbilityModifier(Ability.Dexterity) + TotalFor("Reflex", "Saves");
 
     public int WillSave =>
-        BaseWill + AbilityModifier(Ability.Wisdom) + Total("Will");
+        BaseWill + AbilityModifier(Ability.Wisdom) + TotalFor("Will", "Saves");
 
-    // Attacks
+    // Attacks ("Attack" bonuses apply to both melee and ranged)
     public int MeleeAttackBonus =>
-        BaseAttackBonus + AbilityModifier(Ability.Strength) + Total("Attack");
+        BaseAttackBonus + AbilityModifier(Ability.Strength) + TotalFor("Attack", "MeleeAttack");
 
     public int RangedAttackBonus =>
-        BaseAttackBonus + AbilityModifier(Ability.Dexterity) + Total("Attack");
+        BaseAttackBonus + AbilityModifier(Ability.Dexterity) + TotalFor("Attack", "RangedAttack");
 
     // Defense
     public int ArmorClass =>

@@ -2,7 +2,11 @@
   {
     "id": "core.arcane-strike", "name": "Arcane Strike", "types": ["Combat"],
     "description": "As a swift action, your weapons deal +1 damage for 1 round and count as magic against damage reduction. The bonus rises by 1 per five caster levels, to +5 at 20th.",
-    "prerequisites": [ { "type": "SpellcastingType", "name": "Arcane" } ]
+    "prerequisites": [ { "type": "SpellcastingType", "name": "Arcane" } ],
+    "modifiers": [
+      { "stat": "Damage", "value": 1, "type": "Untyped", "condition": "Arcane Strike",
+        "scaling": { "source": "CasterLevel", "step": 5 } }
+    ]
   },
   {
     "id": "core.channel-smite", "name": "Channel Smite", "types": ["Combat"],
@@ -11,7 +15,10 @@
   },
   {
     "id": "core.combat-casting", "name": "Combat Casting", "types": ["General"],
-    "description": "+4 bonus on concentration checks to cast defensively or while grappled."
+    "description": "+4 bonus on concentration checks to cast defensively or while grappled.",
+    "modifiers": [
+      { "stat": "Concentration", "value": 4, "type": "Untyped", "condition": "when:casting-defensively-or-grappled" }
+    ]
   },
   {
     "id": "core.deadly-aim", "name": "Deadly Aim", "types": ["Combat"],
@@ -19,6 +26,12 @@
     "prerequisites": [
       { "type": "AbilityScore", "ability": "Dexterity", "value": 13 },
       { "type": "BaseAttackBonus", "value": 1 }
+    ],
+    "modifiers": [
+      { "stat": "RangedAttack", "value": -1, "type": "Untyped", "condition": "Deadly Aim",
+        "scaling": { "source": "BaseAttackBonus", "step": 4, "perStep": -1 } },
+      { "stat": "RangedDamage", "value": 2, "type": "Untyped", "condition": "Deadly Aim",
+        "scaling": { "source": "BaseAttackBonus", "step": 4, "perStep": 2 } }
     ]
   },
   {
@@ -146,7 +159,11 @@
 
   {
     "id": "core.point-blank-shot", "name": "Point-Blank Shot", "types": ["Combat"],
-    "description": "+1 bonus on attack and damage rolls with ranged weapons against targets within 30 feet."
+    "description": "+1 bonus on attack and damage rolls with ranged weapons against targets within 30 feet.",
+    "modifiers": [
+      { "stat": "RangedAttack", "value": 1, "type": "Untyped", "condition": "when:target-within-30-feet" },
+      { "stat": "RangedDamage", "value": 1, "type": "Untyped", "condition": "when:target-within-30-feet" }
+    ]
   },
   {
     "id": "core.far-shot", "name": "Far Shot", "types": ["Combat"],
@@ -196,6 +213,9 @@
     "prerequisites": [
       { "type": "AbilityScore", "ability": "Dexterity", "value": 13 },
       { "type": "Feat", "name": "Point-Blank Shot" }
+    ],
+    "modifiers": [
+      { "stat": "RangedAttack", "value": -2, "type": "Untyped", "condition": "Rapid Shot" }
     ]
   },
   {

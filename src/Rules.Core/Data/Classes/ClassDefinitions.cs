@@ -8,7 +8,8 @@ public enum BabProgression { Full, ThreeQuarters, Half }
 public enum SaveProgression { Good, Poor }
 
 // Defines a class feature, including the level at which it is gained, its name, and description.
-public record ClassFeatureDefinition(int Level, string Name, string Description);
+public record ClassFeatureDefinition(
+    int Level, string Name, string Description, List<ModifierDefinition>? Modifiers = null);
 
 // Which feats a class's "Bonus Feat" features can be spent on: any feat with one of the listed types, plus any feats named explicitly.
 public record BonusFeatRule(List<FeatType>? Types = null, List<string>? Names = null)

@@ -19,27 +19,48 @@
         },
         {
             "name": "Defensive Training",
-            "description": "Dwarves get a +4 dodge bonus to their AC against monsters of the giant subtype."
+            "description": "Dwarves get a +4 dodge bonus to their AC against monsters of the giant subtype.",
+            "modifiers": [
+                { "stat": "AC", "value": 4, "type": "Dodge", "condition": "vs:giant" }
+            ]
         },
         {
             "name": "Greed",
-            "description": "Dwarves receive a +2 racial bonus on Appraise checks made to determine the price of nonmagical goods that contain precious metals or gemstones."
+            "description": "Dwarves receive a +2 racial bonus on Appraise checks made to determine the price of nonmagical goods that contain precious metals or gemstones.",
+            "modifiers": [
+                { "stat": "Appraise", "value": 2, "type": "Racial", "condition": "when:appraising-nonmagical-precious-goods" }
+            ]
         },
         {
             "name": "Hatred",
-            "description": "Dwarves receive a +1 bonus on attack rolls against humanoid creatures of the orc and goblinoid subtypes because of their special training against these hated foes."
+            "description": "Dwarves receive a +1 bonus on attack rolls against humanoid creatures of the orc and goblinoid subtypes because of their special training against these hated foes.",
+            "modifiers": [
+                { "stat": "Attack", "value": 1, "type": "Untyped", "condition": "vs:orc" },
+                { "stat": "Attack", "value": 1, "type": "Untyped", "condition": "vs:goblinoid" }
+            ]
         },
         {
             "name": "Hardy",
-            "description": "Dwarves receive a +2 racial bonus on saving throws against poison, spells, and spell-like abilities."
+            "description": "Dwarves receive a +2 racial bonus on saving throws against poison, spells, and spell-like abilities.",
+            "modifiers": [
+                { "stat": "Saves", "value": 2, "type": "Racial", "condition": "vs:poison" },
+                { "stat": "Saves", "value": 2, "type": "Racial", "condition": "vs:spells" },
+                { "stat": "Saves", "value": 2, "type": "Racial", "condition": "vs:spell-like-abilities" }
+            ]
         },
         {
             "name": "Stability",
-            "description": "Dwarves receive a +4 racial bonus to their Combat Maneuver Defense when resisting a bull rush or trip attempt while standing on the ground."
+            "description": "Dwarves receive a +4 racial bonus to their Combat Maneuver Defense when resisting a bull rush or trip attempt while standing on the ground.",
+            "modifiers": [
+                { "stat": "CMD", "value": 4, "type": "Racial", "condition": "when:resisting-bull-rush-or-trip-while-standing-on-the-ground" }
+            ]
         },
         {
             "name": "Stonecunning",
-            "description": "Dwarves receive a +2 bonus on Perception checks to potentially notice unusual stonework, such as traps and hidden doors located in stone walls or floors. They receive a check to notice any such features that they pass within 10 feet of, whether or not they are actively looking."
+            "description": "Dwarves receive a +2 bonus on Perception checks to potentially notice unusual stonework, such as traps and hidden doors located in stone walls or floors. They receive a check to notice any such features that they pass within 10 feet of, whether or not they are actively looking.",
+            "modifiers": [
+                { "stat": "Perception", "value": 2, "type": "Untyped", "condition": "when:noticing-unusual-stonework" }
+            ]
         },
         {
             "name": "Weapon Familiarity",

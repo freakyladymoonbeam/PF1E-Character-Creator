@@ -21,6 +21,10 @@ public static class TestData
     // Returns the predefined Elf race definition.
     public static RaceDefinition Elf() =>
         DataPackLoader.LoadRace(DataPath("races", "elf.json"));
+    
+    // Returns the predefined Dwarf race definition.
+    public static RaceDefinition Dwarf() =>
+        DataPackLoader.LoadRace(DataPath("races", "dwarf.json"));
 
     // Returns the list of all predefined skill definitions.
     public static List<SkillDefinition> Skills() =>

@@ -25,5 +25,5 @@ public enum BonusType
     Trait
 }
 
-// Represents a modifier to a character's stat, including its value, type, and source.
-public record Modifier(string Stat, int Value, BonusType Type, string Source);
+// Represents a modifier to a character's stat, including its value, type, source, and the condition (if any) that must be on for it to apply.
+public record Modifier(string Stat, int Value, BonusType Type, string Source, string? Condition = null);

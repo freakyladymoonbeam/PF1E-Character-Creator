@@ -15,11 +15,18 @@
         },
         {
             "name": "Elven Immunities",
-            "description": "Elves are immune to magic sleep effects and get a +2 racial bonus on saving throws against enchantment spells and effects."
+            "description": "Elves are immune to magic sleep effects and get a +2 racial bonus on saving throws against enchantment spells and effects.",
+            "modifiers": [
+                { "stat": "Saves", "value": 2, "type": "Racial", "condition": "vs:enchantment" }
+            ]
         },
         {
             "name": "Elven Magic",
-            "description": "Elves receive a +2 racial bonus on caster level checks made to overcome spell resistance. In addition, elves receive a +2 racial bonus on Spellcraft checks made to identify the properties of magic items."
+            "description": "Elves receive a +2 racial bonus on caster level checks made to overcome spell resistance. In addition, elves receive a +2 racial bonus on Spellcraft checks made to identify the properties of magic items.",
+            "modifiers": [
+                { "stat": "CasterLevelCheck", "value": 2, "type": "Racial", "condition": "vs:spell-resistance" },
+                { "stat": "Spellcraft", "value": 2, "type": "Racial", "condition": "when:identifying-magic-item-properties" }
+            ]
         },
         {
             "name": "Keen Senses",

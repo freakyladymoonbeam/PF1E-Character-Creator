@@ -31,7 +31,14 @@
   "features": [
     { "level": 1, "name": "Bonus Feat", "description": "Gain a bonus combat feat. Fighters get another at every even level." },
     { "level": 2, "name": "Bonus Feat", "description": "Gain a bonus combat feat." },
-    { "level": 2, "name": "Bravery", "description": "+1 bonus on Will saves against fear, increasing by 1 every four levels after 2nd." },
+    {
+      "level": 2, "name": "Bravery",
+      "description": "+1 bonus on Will saves against fear, increasing by 1 every four levels after 2nd.",
+      "modifiers": [
+        { "stat": "Will", "value": 1, "type": "Untyped", "condition": "vs:fear",
+          "scaling": { "source": "ClassLevel", "className": "Fighter", "start": 2, "step": 4 } }
+      ]
+    },
     { "level": 3, "name": "Armor Training", "description": "Reduces armor check penalty by 1 and raises armor's maximum Dex bonus by 1. Improves every four levels after 3rd. Allows normal speed in medium armor at 3rd level and heavy armor at 7th." },
     { "level": 4, "name": "Bonus Feat", "description": "Gain a bonus combat feat." },
     { "level": 5, "name": "Weapon Training", "description": "Choose a weapon group for +1 attack and damage. Improves every four levels after 5th, and you choose a new group at 9th, 13th, and 17th." },
