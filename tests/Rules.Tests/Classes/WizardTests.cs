@@ -137,4 +137,23 @@ public class WizardTests
         Assert.Equal(0, character.SpellsPerDay(fighter, 1));
         Assert.Throws<InvalidOperationException>(() => character.SpellSaveDC(fighter, 1));
     }
+
+    // Tests that a wizard gains Draconic as a bonus language from the Bonus Languages class feature.
+    [Fact]
+    public void Wizard_GainsDraconicAsBonusLanguage()
+    {
+        var (character, wizard) = WizardOfLevel(1, 10);
+
+        Assert.Contains("Draconic", character.ClassLanguages);
+    }
+
+    // Tests that a non-wizard class does not grant Draconic as a bonus language.
+    [Fact]
+    public void NonWizard_DoesNotGainDraconicBonusLanguage()
+    {
+        var fighter = new Character();
+        fighter.Classes.Add(new ClassLevel(LoadFighter(), 1));
+
+        Assert.DoesNotContain("Draconic", fighter.ClassLanguages);
+    }
 }

@@ -17,4 +17,7 @@ public partial class Character
     // The base ability scores of the character.
     public Dictionary<Ability, int> BaseAbilityScores { get; } =
         Enum.GetValues<Ability>().ToDictionary(a => a, _ => 10);
+
+    // Languages the character knows, gathered from race and class features.
+    public HashSet<string> Languages { get; } = new(StringComparer.OrdinalIgnoreCase);
 }

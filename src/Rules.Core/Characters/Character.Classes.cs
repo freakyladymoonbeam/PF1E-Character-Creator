@@ -28,4 +28,11 @@ public partial class Character
         .Select(c => c.Level)
         .DefaultIfEmpty(0)
         .Max();
+
+    // Languages the character knows: racial languages plus any granted by class features.
+    public IEnumerable<string> ClassLanguages =>
+        ClassFeatures
+            .Where(f => f.Name == "Bonus Languages")
+            .SelectMany(_ => new[] { "Draconic" })
+            .Distinct(StringComparer.OrdinalIgnoreCase);
 }
