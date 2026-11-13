@@ -63,9 +63,9 @@ public class CombatStyleFeatTests
 
     // ---- Feats a class grants automatically ----
 
-    // Verifies that the Fighter grants armor and shield proficiencies and the Wizard grants its two level 1 feats.
+    // Verifies that the Fighter grants armor and shield proficiencies and the Wizard grants Scribe Scroll.
     [Fact]
-    public void Fighter_GrantsArmorAndShieldProficiencies_Wizard_GrantsItsTwoFeats()
+    public void Fighter_GrantsArmorAndShieldProficiencies_Wizard_GrantsScribeScroll()
     {
         Assert.Equal(5, TestData.Fighter().GrantedFeats!.Count);
         Assert.Equal(new[] { "Scribe Scroll" }, TestData.Wizard().GrantedFeats);

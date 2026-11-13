@@ -37,7 +37,8 @@ public record ClassDefinition(
     List<ClassFeatureDefinition> Features,
     SpellcastingDefinition? Spellcasting = null,
     List<string>? GrantedFeats = null,    // feats the class gives automatically (e.g. armor proficiencies)
-    BonusFeatRule? BonusFeats = null)     // which feats the class's "Bonus Feat" features can be spent on
+    BonusFeatRule? BonusFeats = null,     // which feats the class's "Bonus Feat" features can be spent on
+    List<string>? BonusLanguages = null)  // extra languages the class can choose from (a wizard can pick Draconic)
 {
     // Checks if the class allows a specific alignment.
     public bool AllowsAlignment(Alignment alignment) =>

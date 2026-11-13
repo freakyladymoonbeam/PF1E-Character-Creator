@@ -194,12 +194,14 @@ public class BonusFeatTests
         var (wizard, level) = Build(TestData.Wizard(), 5);
 
         Assert.Contains("Scribe Scroll", wizard.GrantedFeatNames);
-        Assert.DoesNotContain("Eschew Materials", wizard.GrantedFeatNames);
-
         Assert.Contains(wizard.FeatProblems(TestData.Feat("Scribe Scroll")),
             p => p.Contains("Already has"));
         Assert.Contains(wizard.BonusFeatProblems(level, TestData.Feat("Scribe Scroll")),
             p => p.Contains("Already has"));
+
+        // Eschew Materials is just an ordinary feat for a wizard now.
+        Assert.DoesNotContain("Eschew Materials", wizard.GrantedFeatNames);
+        Assert.Empty(wizard.FeatProblems(TestData.Feat("Eschew Materials")));
     }
 
     // Verifies that a wizard has no bonus feat until level five.
