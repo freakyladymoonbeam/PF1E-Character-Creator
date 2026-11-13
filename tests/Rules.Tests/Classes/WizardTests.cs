@@ -31,7 +31,7 @@ public class WizardTests
         Assert.Equal(BabProgression.Half, wizard.BabProgression);
         Assert.Equal(SaveProgression.Good, wizard.Will);
         Assert.Equal(70m, wizard.StartingWealth.Average);
-        Assert.Equal(10, wizard.Features.Count);
+        Assert.Equal(11, wizard.Features.Count);
         Assert.NotNull(wizard.Spellcasting);
         Assert.Equal(Ability.Intelligence, wizard.Spellcasting!.CastingAbility);
         Assert.Equal(MagicType.Arcane, wizard.Spellcasting.MagicType);

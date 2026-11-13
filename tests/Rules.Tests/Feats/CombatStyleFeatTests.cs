@@ -68,7 +68,7 @@ public class CombatStyleFeatTests
     public void Fighter_GrantsArmorAndShieldProficiencies_Wizard_GrantsItsTwoFeats()
     {
         Assert.Equal(5, TestData.Fighter().GrantedFeats!.Count);
-        Assert.Equal(new[] { "Scribe Scroll", "Eschew Materials" }, TestData.Wizard().GrantedFeats);
+        Assert.Equal(new[] { "Scribe Scroll" }, TestData.Wizard().GrantedFeats);
     }
 
     // Verifies that all feats granted by a class are real feats.

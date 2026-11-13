@@ -187,22 +187,19 @@ public class BonusFeatTests
 
     // ---- Wizard bonus feats ----
 
-    // Verifies that a wizard is granted the Scribe Scroll and Eschew Materials feats and cannot take them again.
+    // Verifies that a wizard is granted the Scribe Scroll feat and cannot take it again.
     [Fact]
-    public void WizardIsGrantedScribeScrollAndEschewMaterials_AndCannotTakeThemAgain()
+    public void WizardIsGrantedScribeScroll_AndCannotTakeItAgain()
     {
         var (wizard, level) = Build(TestData.Wizard(), 5);
 
         Assert.Contains("Scribe Scroll", wizard.GrantedFeatNames);
-        Assert.Contains("Eschew Materials", wizard.GrantedFeatNames);
+        Assert.DoesNotContain("Eschew Materials", wizard.GrantedFeatNames);
 
-        foreach (var name in new[] { "Scribe Scroll", "Eschew Materials" })
-        {
-            Assert.Contains(wizard.FeatProblems(TestData.Feat(name)),
-                p => p.Contains("Already has"));
-            Assert.Contains(wizard.BonusFeatProblems(level, TestData.Feat(name)),
-                p => p.Contains("Already has"));
-        }
+        Assert.Contains(wizard.FeatProblems(TestData.Feat("Scribe Scroll")),
+            p => p.Contains("Already has"));
+        Assert.Contains(wizard.BonusFeatProblems(level, TestData.Feat("Scribe Scroll")),
+            p => p.Contains("Already has"));
     }
 
     // Verifies that a wizard has no bonus feat until level five.
@@ -312,6 +309,6 @@ public class BonusFeatTests
         Assert.Equal(1, character.FeatSlotsAvailable);               // one ordinary feat
         Assert.Equal(0, character.BonusFeatSlotsAvailable(wizard));  // no chosen bonus feat yet
         Assert.Contains("Scribe Scroll", character.GrantedFeatNames);
-        Assert.Contains("Eschew Materials", character.GrantedFeatNames);
+        Assert.DoesNotContain("Eschew Materials", character.GrantedFeatNames);
     }
 }
