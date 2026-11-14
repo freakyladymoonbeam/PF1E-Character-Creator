@@ -23,6 +23,7 @@
   "grantedFeats": ["Scribe Scroll"],
   "bonusFeats": { "types": ["Metamagic", "ItemCreation"], "names": ["Spell Mastery"] },
   "bonusLanguages": ["Draconic"],
+  "grantsFamiliar": true,
   "startingWealth": { "dice": 2, "sides": 6, "multiplier": 10 },
   "spellcasting": {
     "castingAbility": "Intelligence",
@@ -54,7 +55,7 @@
   "features": [
     { "level": 1, "name": "Spells", "description": "Casts arcane spells from the wizard spell list, prepared from a spellbook. Intelligence determines bonus spells and spell save DCs." },
     { "level": 1, "name": "Cantrips", "description": "Can prepare a number of 0-level spells each day, and can cast them repeatedly." },
-    { "level": 1, "name": "Arcane Bond", "description": "Forms a bond with either an object (amulet, ring, staff, wand, or weapon) or a familiar. A bonded object can be used once per day to cast any spell from the wizard's spellbook." },
+    { "level": 1, "name": "Arcane Bond", "description": "Forms a bond with either an object (amulet, ring, staff, wand, or weapon) or a familiar. A bonded object can be used once per day to cast any spell from the wizard's spellbook. A familiar grants skill/save bonuses to its master and gains abilities as the master gains levels." },
     { "level": 1, "name": "Arcane School", "description": "Choose a school of magic to specialize in, gaining school powers and an additional spell slot per spell level, or become a universalist. Specialists must choose two opposition schools." },
     { "level": 1, "name": "Scribe Scroll", "description": "Gains Scribe Scroll as a bonus feat." },
     { "level": 1, "name": "Bonus Languages", "description": "May substitute Draconic for one of the bonus languages available from the character's race." },

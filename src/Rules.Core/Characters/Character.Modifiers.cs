@@ -19,7 +19,7 @@ public partial class Character
 
     // Everything affecting the character, whether or not its condition is currently on.
     public IEnumerable<Modifier> AllModifiers =>
-        Modifiers.Concat(RaceModifiers()).Concat(ClassFeatureModifiers()).Concat(FeatModifiers());
+        Modifiers.Concat(RaceModifiers()).Concat(ClassFeatureModifiers()).Concat(FeatModifiers()).Concat(FamiliarModifiers());
 
     // The modifiers that apply right now: unconditional ones, plus conditional ones that are switched on.
     public IEnumerable<Modifier> ActiveModifiers => AllModifiers.Where(IsActive);
@@ -60,6 +60,34 @@ public partial class Character
         foreach (var choice in AllFeats)
             foreach (var m in choice.Feat.Modifiers ?? [])
                 yield return ResolveModifier(m, $"Feat: {choice.Feat.Name}", choice.Subject);
+    }
+
+    // Modifiers granted by the character's familiar, if any.
+    private IEnumerable<Modifier> FamiliarModifiers()
+    {
+        if (FamiliarType is null) yield break;
+
+        string source = $"Familiar: {FamiliarType}";
+
+        // Familiar type bonus (skill or save bonus).
+        if (FamiliarBonus is { } bonus)
+            yield return new Modifier(bonus.Stat, bonus.Value, BonusType.Untyped, source);
+
+        // Familiar abilities scale with master level (levels in classes that grant familiars stack).
+        int masterLevel = Classes.Where(c => c.Class.GrantsFamiliar).Sum(c => c.Level);
+
+        // 1st-2nd level: Alertness (+2 Perception, +2 Sense Motive).
+        if (masterLevel >= 1)
+        {
+            yield return new Modifier("Perception", 2, BonusType.Untyped, source);
+            yield return new Modifier("Sense Motive", 2, BonusType.Untyped, source);
+        }
+
+        // 5th-6th: Speak with master (no mechanical modifier needed for the character sheet).
+        // 7th-8th: Speak with animals of its kind (familiar ability, not master).
+        // 11th-12th: Spell resistance (familiar ability, not master).
+        // 13th-14th: Scry on familiar (familiar ability, not master).
+        // Deliver touch spells (3rd-4th) is a familiar ability, not a master modifier.
     }
 
     // Turns a data definition into a concrete modifier for this character.
