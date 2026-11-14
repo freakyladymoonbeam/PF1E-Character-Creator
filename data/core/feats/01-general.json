@@ -1,0 +1,294 @@
+[
+  {
+    "id": "core.acrobatic", "name": "Acrobatic", "types": ["General"],
+    "description": "Bonus on Acrobatics and Fly checks, larger at 10 ranks in the skill.",
+    "modifiers": [
+      { "stat": "Acrobatics", "value": 2, "type": "Untyped", "upgradedValue": 4 },
+      { "stat": "Fly", "value": 2, "type": "Untyped", "upgradedValue": 4 }
+    ]
+  },
+  {
+    "id": "core.alertness", "name": "Alertness", "types": ["General"],
+    "description": "Bonus on Perception and Sense Motive checks, larger at 10 ranks in the skill.",
+    "modifiers": [
+      { "stat": "Perception", "value": 2, "type": "Untyped", "upgradedValue": 4 },
+      { "stat": "Sense Motive", "value": 2, "type": "Untyped", "upgradedValue": 4 }
+    ]
+  },
+  {
+    "id": "core.alignment-channel", "name": "Alignment Channel", "types": ["General"],
+    "subject": "AlignmentSubtype",
+    "description": "Choose chaos, evil, good, or law. Channel energy can heal or harm outsiders of that subtype.",
+    "prerequisites": [ { "type": "ClassFeature", "name": "Channel Energy" } ]
+  },
+  {
+    "id": "core.animal-affinity", "name": "Animal Affinity", "types": ["General"],
+    "description": "Bonus on Handle Animal and Ride checks, larger at 10 ranks in the skill.",
+    "modifiers": [
+      { "stat": "Handle Animal", "value": 2, "type": "Untyped", "upgradedValue": 4 },
+      { "stat": "Ride", "value": 2, "type": "Untyped", "upgradedValue": 4 }
+    ]
+  },
+  {
+    "id": "core.athletic", "name": "Athletic", "types": ["General"],
+    "description": "Bonus on Climb and Swim checks, larger at 10 ranks in the skill.",
+    "modifiers": [
+      { "stat": "Climb", "value": 2, "type": "Untyped", "upgradedValue": 4 },
+      { "stat": "Swim", "value": 2, "type": "Untyped", "upgradedValue": 4 }
+    ]
+  },
+  {
+    "id": "core.augment-summoning", "name": "Augment Summoning", "types": ["General"],
+    "description": "Creatures you summon gain a +4 enhancement bonus to Strength and Constitution.",
+    "prerequisites": [ { "type": "Feat", "name": "Spell Focus", "subject": "Conjuration" } ]
+  },
+  {
+    "id": "core.combat-casting", "name": "Combat Casting", "types": ["General"],
+    "description": "+4 bonus on concentration checks to cast defensively or while grappled.",
+    "modifiers": [
+      { "stat": "Concentration", "value": 4, "type": "Untyped", "condition": "when:casting-defensively-or-grappled" }
+    ]
+  },
+  {
+    "id": "core.command-undead", "name": "Command Undead", "types": ["General"],
+    "description": "Spend a channel negative energy use to take control of undead within 30 feet.",
+    "prerequisites": [ { "type": "ClassFeature", "name": "Channel Negative Energy" } ]
+  },
+  {
+    "id": "core.deceitful", "name": "Deceitful", "types": ["General"],
+    "description": "Bonus on Bluff and Disguise checks, larger at 10 ranks in the skill.",
+    "modifiers": [
+      { "stat": "Bluff", "value": 2, "type": "Untyped", "upgradedValue": 4 },
+      { "stat": "Disguise", "value": 2, "type": "Untyped", "upgradedValue": 4 }
+    ]
+  },
+  {
+    "id": "core.deft-hands", "name": "Deft Hands", "types": ["General"],
+    "description": "Bonus on Disable Device and Sleight of Hand checks, larger at 10 ranks in the skill.",
+    "modifiers": [
+      { "stat": "Disable Device", "value": 2, "type": "Untyped", "upgradedValue": 4 },
+      { "stat": "Sleight of Hand", "value": 2, "type": "Untyped", "upgradedValue": 4 }
+    ]
+  },
+  {
+    "id": "core.elemental-channel", "name": "Elemental Channel", "types": ["General"],
+    "subject": "ElementalSubtype",
+    "description": "Choose an elemental subtype. Channel energy can heal or harm outsiders of that subtype.",
+    "prerequisites": [ { "type": "ClassFeature", "name": "Channel Energy" } ]
+  },
+  {
+    "id": "core.endurance", "name": "Endurance", "types": ["General"],
+    "description": "+4 on checks and saves to resist exhaustion, hunger, thirst, suffocation, and exposure. Sleep in light or medium armor without fatigue."
+  },
+  {
+    "id": "core.diehard", "name": "Diehard", "types": ["General"],
+    "description": "Stabilize automatically below 0 hp and choose to stay conscious, staggered.",
+    "prerequisites": [ { "type": "Feat", "name": "Endurance" } ]
+  },
+  {
+    "id": "core.eschew-materials", "name": "Eschew Materials", "types": ["General"],
+    "description": "Cast spells with cheap material components without needing them."
+  },
+  {
+    "id": "core.extra-channel", "name": "Extra Channel", "types": ["General"],
+    "description": "Channel energy two additional times per day.",
+    "prerequisites": [ { "type": "ClassFeature", "name": "Channel Energy" } ]
+  },
+  {
+    "id": "core.extra-ki", "name": "Extra Ki", "types": ["General"], "repeatable": true,
+    "description": "Your ki pool increases by 2. Stacks if taken again.",
+    "prerequisites": [ { "type": "ClassFeature", "name": "Ki Pool" } ]
+  },
+  {
+    "id": "core.extra-lay-on-hands", "name": "Extra Lay On Hands", "types": ["General"], "repeatable": true,
+    "description": "Use lay on hands two additional times per day. Stacks if taken again.",
+    "prerequisites": [ { "type": "ClassFeature", "name": "Lay on Hands" } ]
+  },
+  {
+    "id": "core.extra-mercy", "name": "Extra Mercy", "types": ["General"],
+    "subject": "Mercy",
+    "description": "Your lay on hands gains one additional mercy for which you qualify.",
+    "prerequisites": [
+      { "type": "ClassFeature", "name": "Lay on Hands" },
+      { "type": "ClassFeature", "name": "Mercy" }
+    ]
+  },
+  {
+    "id": "core.extra-performance", "name": "Extra Performance", "types": ["General"], "repeatable": true,
+    "description": "Use bardic performance for 6 additional rounds per day. Stacks if taken again.",
+    "prerequisites": [ { "type": "ClassFeature", "name": "Bardic Performance" } ]
+  },
+  {
+    "id": "core.extra-rage", "name": "Extra Rage", "types": ["General"], "repeatable": true,
+    "description": "Rage for 6 additional rounds per day. Stacks if taken again.",
+    "prerequisites": [ { "type": "ClassFeature", "name": "Rage" } ]
+  },
+  {
+    "id": "core.fleet", "name": "Fleet", "types": ["General"], "repeatable": true,
+    "description": "+5 feet of base speed in light or no armor and under a light load. Stacks if taken again."
+  },
+  {
+    "id": "core.great-fortitude", "name": "Great Fortitude", "types": ["General"],
+    "description": "Bonus on Fortitude saves.",
+    "modifiers": [ { "stat": "Fortitude", "value": 2, "type": "Untyped" } ]
+  },
+  {
+    "id": "core.improved-great-fortitude", "name": "Improved Great Fortitude", "types": ["General"],
+    "description": "Once per day, reroll a Fortitude save and keep the second result.",
+    "prerequisites": [ { "type": "Feat", "name": "Great Fortitude" } ]
+  },
+  {
+    "id": "core.improved-channel", "name": "Improved Channel", "types": ["General"],
+    "description": "Raises the save DC of your channel energy.",
+    "prerequisites": [ { "type": "ClassFeature", "name": "Channel Energy" } ]
+  },
+  {
+    "id": "core.improved-counterspell", "name": "Improved Counterspell", "types": ["General"],
+    "description": "Counterspell with a spell of the same school that is a higher spell level."
+  },
+  {
+	"id": "core.improved-familiar", "name": "Improved Familiar",
+	"types": ["General"],
+	"description": "Allows you to acquire a powerful familiar when you could normally acquire a new familiar. Choose a familiar with an alignment up to one step away on each alignment axis."
+  },
+  {
+    "id": "core.iron-will", "name": "Iron Will", "types": ["General"],
+    "description": "Bonus on Will saves.",
+    "modifiers": [ { "stat": "Will", "value": 2, "type": "Untyped" } ]
+  },
+  {
+    "id": "core.improved-iron-will", "name": "Improved Iron Will", "types": ["General"],
+    "description": "Once per day, reroll a Will save and keep the second result.",
+    "prerequisites": [ { "type": "Feat", "name": "Iron Will" } ]
+  },
+  {
+    "id": "core.leadership", "name": "Leadership", "types": ["General"],
+    "description": "Attract a cohort and followers.",
+    "prerequisites": [ { "type": "CharacterLevel", "value": 7 } ]
+  },
+  {
+    "id": "core.lightning-reflexes", "name": "Lightning Reflexes", "types": ["General"],
+    "description": "Bonus on Reflex saves.",
+    "modifiers": [ { "stat": "Reflex", "value": 2, "type": "Untyped" } ]
+  },
+  {
+    "id": "core.improved-lightning-reflexes", "name": "Improved Lightning Reflexes", "types": ["General"],
+    "description": "Once per day, reroll a Reflex save and keep the second result.",
+    "prerequisites": [ { "type": "Feat", "name": "Lightning Reflexes" } ]
+  },
+  {
+    "id": "core.magical-aptitude", "name": "Magical Aptitude", "types": ["General"],
+    "description": "Bonus on Spellcraft and Use Magic Device checks, larger at 10 ranks in the skill.",
+    "modifiers": [
+      { "stat": "Spellcraft", "value": 2, "type": "Untyped", "upgradedValue": 4 },
+      { "stat": "Use Magic Device", "value": 2, "type": "Untyped", "upgradedValue": 4 }
+    ]
+  },
+  {
+    "id": "core.master-craftsman", "name": "Master Craftsman", "types": ["General"],
+    "subject": "Skill",
+    "description": "Choose a Craft or Profession skill with 5 or more ranks. +2 bonus on it, and its ranks can count as caster level for certain item creation feats. (The 5-ranks rule for the chosen skill isn't checked yet.)",
+    "prerequisites": [ { "type": "SkillRanks", "name": "Craft|Profession", "value": 5 } ],
+    "modifiers": [ { "stat": "{subject}", "value": 2, "type": "Untyped" } ]
+  },
+  {
+    "id": "core.natural-spell", "name": "Natural Spell", "types": ["General"],
+    "description": "Cast spells while in wild shape.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Wisdom", "value": 13 },
+      { "type": "ClassFeature", "name": "Wild Shape" }
+    ]
+  },
+  {
+    "id": "core.nimble-moves", "name": "Nimble Moves", "types": ["General"],
+    "description": "Ignore 5 feet of difficult terrain when you move.",
+    "prerequisites": [ { "type": "AbilityScore", "ability": "Dexterity", "value": 13 } ]
+  },
+  {
+    "id": "core.acrobatic-steps", "name": "Acrobatic Steps", "types": ["General"],
+    "description": "Ignore another 15 feet of difficult terrain when you move (20 total with Nimble Moves).",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Dexterity", "value": 15 },
+      { "type": "Feat", "name": "Nimble Moves" }
+    ]
+  },
+  {
+    "id": "core.persuasive", "name": "Persuasive", "types": ["General"],
+    "description": "Bonus on Diplomacy and Intimidate checks, larger at 10 ranks in the skill.",
+    "modifiers": [
+      { "stat": "Diplomacy", "value": 2, "type": "Untyped", "upgradedValue": 4 },
+      { "stat": "Intimidate", "value": 2, "type": "Untyped", "upgradedValue": 4 }
+    ]
+  },
+  {
+    "id": "core.run", "name": "Run", "types": ["General"],
+    "description": "Run at five times your speed (four in heavy armor or under a heavy load) and keep your Dex bonus to AC."
+  },
+  {
+    "id": "core.selective-channeling", "name": "Selective Channeling", "types": ["General"],
+    "description": "Choose targets, up to your Charisma modifier, that your channeled energy does not affect.",
+    "prerequisites": [
+      { "type": "AbilityScore", "ability": "Charisma", "value": 13 },
+      { "type": "ClassFeature", "name": "Channel Energy" }
+    ]
+  },
+  {
+    "id": "core.self-sufficient", "name": "Self-Sufficient", "types": ["General"],
+    "description": "Bonus on Heal and Survival checks, larger at 10 ranks in the skill.",
+    "modifiers": [
+      { "stat": "Heal", "value": 2, "type": "Untyped", "upgradedValue": 4 },
+      { "stat": "Survival", "value": 2, "type": "Untyped", "upgradedValue": 4 }
+    ]
+  },
+  {
+    "id": "core.skill-focus", "name": "Skill Focus", "types": ["General"],
+    "subject": "Skill",
+    "description": "Choose a skill. Bonus on checks with it, larger at 10 ranks.",
+    "modifiers": [
+      { "stat": "{subject}", "value": 3, "type": "Untyped", "upgradedValue": 6 }
+    ]
+  },
+  {
+    "id": "core.spell-focus", "name": "Spell Focus", "types": ["General"],
+    "subject": "SpellSchool",
+    "description": "Choose a school of magic. Its spells are harder to resist."
+  },
+  {
+    "id": "core.greater-spell-focus", "name": "Greater Spell Focus", "types": ["General"],
+    "subject": "SpellSchool",
+    "description": "Choose a school you already have Spell Focus in. Another bonus to its save DCs.",
+    "prerequisites": [ { "type": "Feat", "name": "Spell Focus", "subject": "{subject}" } ]
+  },
+  {
+    "id": "core.spell-mastery", "name": "Spell Mastery", "types": ["General"],
+    "description": "Prepare a few known spells without a spellbook.",
+    "prerequisites": [ { "type": "ClassLevel", "name": "Wizard", "value": 1 } ]
+  },
+  {
+    "id": "core.spell-penetration", "name": "Spell Penetration", "types": ["General"],
+    "description": "Bonus on caster level checks to beat spell resistance."
+  },
+  {
+    "id": "core.greater-spell-penetration", "name": "Greater Spell Penetration", "types": ["General"],
+    "description": "Another +2 bonus on caster level checks to overcome spell resistance.",
+    "prerequisites": [ { "type": "Feat", "name": "Spell Penetration" } ]
+  },
+  {
+    "id": "core.stealthy", "name": "Stealthy", "types": ["General"],
+    "description": "Bonus on Escape Artist and Stealth checks, larger at 10 ranks in the skill.",
+    "modifiers": [
+      { "stat": "Escape Artist", "value": 2, "type": "Untyped", "upgradedValue": 4 },
+      { "stat": "Stealth", "value": 2, "type": "Untyped", "upgradedValue": 4 }
+    ]
+  },
+  {
+    "id": "core.toughness", "name": "Toughness", "types": ["General"],
+    "description": "Extra hit points, with more for each Hit Die beyond 3.",
+    "modifiers": [ { "stat": "HP", "value": 3, "type": "Untyped", "extraPerLevelBeyond": 3 } ]
+  },
+  {
+    "id": "core.turn-undead", "name": "Turn Undead", "types": ["General"],
+    "description": "Spend a channel positive energy use to make undead within 30 feet flee.",
+    "prerequisites": [ { "type": "ClassFeature", "name": "Channel Positive Energy" } ]
+  }
+]

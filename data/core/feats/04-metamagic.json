@@ -1,0 +1,38 @@
+[
+  {
+    "id": "core.empower-spell", "name": "Empower Spell", "types": ["Metamagic"],
+    "description": "Increase a spell's variable numeric effects by half, using a slot two levels higher."
+  },
+  {
+    "id": "core.enlarge-spell", "name": "Enlarge Spell", "types": ["Metamagic"],
+    "description": "Double the range of a close, medium, or long range spell. Uses a slot one level higher."
+  },
+  {
+    "id": "core.extend-spell", "name": "Extend Spell", "types": ["Metamagic"],
+    "description": "Double a spell's duration. Uses a slot one level higher."
+  },
+  {
+    "id": "core.heighten-spell", "name": "Heighten Spell", "types": ["Metamagic"],
+    "description": "Cast a spell as if it were a higher level, up to 9th. Uses a slot of that higher level."
+  },
+  {
+    "id": "core.maximize-spell", "name": "Maximize Spell", "types": ["Metamagic"],
+    "description": "Maximize all variable numeric effects of a spell. Uses a slot three levels higher."
+  },
+  {
+    "id": "core.quicken-spell", "name": "Quicken Spell", "types": ["Metamagic"],
+    "description": "Cast a spell as a swift action. Uses a slot four levels higher."
+  },
+  {
+    "id": "core.silent-spell", "name": "Silent Spell", "types": ["Metamagic"],
+    "description": "Cast a spell without verbal components. Uses a slot one level higher."
+  },
+  {
+    "id": "core.still-spell", "name": "Still Spell", "types": ["Metamagic"],
+    "description": "Cast a spell without somatic components. Uses a slot one level higher."
+  },
+  {
+    "id": "core.widen-spell", "name": "Widen Spell", "types": ["Metamagic"],
+    "description": "Double the area of a burst, emanation, or spread spell. Uses a slot three levels higher."
+  }
+]

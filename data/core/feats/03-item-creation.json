@@ -1,0 +1,42 @@
+[
+  {
+    "id": "core.scribe-scroll", "name": "Scribe Scroll", "types": ["ItemCreation"],
+    "description": "Create magic scrolls.",
+    "prerequisites": [ { "type": "CasterLevel", "value": 1 } ]
+  },
+  {
+    "id": "core.brew-potion", "name": "Brew Potion", "types": ["ItemCreation"],
+    "description": "Create magic potions.",
+    "prerequisites": [ { "type": "CasterLevel", "value": 3 } ]
+  },
+  {
+    "id": "core.craft-wondrous-item", "name": "Craft Wondrous Item", "types": ["ItemCreation"],
+    "description": "Create wondrous items.",
+    "prerequisites": [ { "type": "CasterLevel", "value": 3 } ]
+  },
+  {
+    "id": "core.craft-magic-arms-and-armor", "name": "Craft Magic Arms and Armor", "types": ["ItemCreation"],
+    "description": "Create magic weapons, armor, and shields.",
+    "prerequisites": [ { "type": "CasterLevel", "value": 5 } ]
+  },
+  {
+    "id": "core.craft-wand", "name": "Craft Wand", "types": ["ItemCreation"],
+    "description": "Create magic wands.",
+    "prerequisites": [ { "type": "CasterLevel", "value": 5 } ]
+  },
+  {
+    "id": "core.forge-ring", "name": "Forge Ring", "types": ["ItemCreation"],
+    "description": "Create magic rings.",
+    "prerequisites": [ { "type": "CasterLevel", "value": 7 } ]
+  },
+  {
+    "id": "core.craft-rod", "name": "Craft Rod", "types": ["ItemCreation"],
+    "description": "Create magic rods.",
+    "prerequisites": [ { "type": "CasterLevel", "value": 9 } ]
+  },
+  {
+    "id": "core.craft-staff", "name": "Craft Staff", "types": ["ItemCreation"],
+    "description": "Create magic staves.",
+    "prerequisites": [ { "type": "CasterLevel", "value": 11 } ]
+  }
+]
