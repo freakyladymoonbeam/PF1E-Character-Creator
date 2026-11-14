@@ -429,3 +429,6 @@ FodyWeavers.xsd
 
 # Text files
 *.txt
+
+# Source text reference files
+txt Files/
