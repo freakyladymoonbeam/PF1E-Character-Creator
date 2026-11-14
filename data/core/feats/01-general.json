@@ -146,11 +146,14 @@
     "id": "core.improved-counterspell", "name": "Improved Counterspell", "types": ["General"],
     "description": "Counterspell with a spell of the same school that is a higher spell level."
   },
-  {
-	"id": "core.improved-familiar", "name": "Improved Familiar",
-	"types": ["General"],
-	"description": "Allows you to acquire a powerful familiar when you could normally acquire a new familiar. Choose a familiar with an alignment up to one step away on each alignment axis."
-  },
+	{
+		"id": "core.improved-familiar", "name": "Improved Familiar",
+		"types": ["General"],
+		"description": "Allows you to acquire a powerful familiar when you could normally acquire a new familiar. Choose a familiar with an alignment up to one step away on each alignment axis.",
+		"prerequisites": [
+			{ "type": "ClassFeature", "name": "Arcane Bond" }
+		]
+	},
   {
     "id": "core.iron-will", "name": "Iron Will", "types": ["General"],
     "description": "Bonus on Will saves.",
